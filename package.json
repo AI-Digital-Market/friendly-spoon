@@ -1,8 +1,9 @@
 {
-    "name": "spark-template",
+    "name": "ai-digital-friend",
     "private": true,
-    "version": "0.0.0",
+    "version": "1.0.0",
     "type": "module",
+    "description": "AI Digital Friend - One Last AI Platform with multiple AI-powered modules",
     "scripts": {
         "dev": "vite",
         "kill": "fuser -k 5000/tcp",

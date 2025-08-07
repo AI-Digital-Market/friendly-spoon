@@ -2,90 +2,103 @@ import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Heart, Brain, ChartLine, Calendar, Camera, Mic, MessageCircle, Users, Bot, Sparkles, ChartBar } from '@phosphor-icons/react'
+import { 
+  Heart, 
+  Brain, 
+  ChartLine, 
+  Camera, 
+  MessageCircle, 
+  Users, 
+  Bot, 
+  Sparkles, 
+  ChartBar,
+  NetworkX,
+  PenTool,
+  FileText,
+  Eye,
+  Memory
+} from '@phosphor-icons/react'
 
 const modules = [
   {
-    id: 'moodanalyzer',
-    title: 'Mood Analyzer',
-    description: 'Advanced AI-powered mood detection and analysis through text, voice, and visual inputs.',
-    subdomain: 'mood.moodmirror.ai',
-    features: ['Text Analysis', 'Voice Detection', 'Facial Recognition'],
-    icon: Heart,
-    status: 'Available'
-  },
-  {
-    id: 'patterninsights',
-    title: 'Pattern Insights',
-    description: 'Discover emotional patterns and triggers with AI-driven behavioral analysis.',
-    subdomain: 'patterns.moodmirror.ai',
-    features: ['Trend Analysis', 'Trigger Identification', 'Behavior Patterns'],
-    icon: ChartLine,
-    status: 'Available'
-  },
-  {
-    id: 'weeklysummary',
-    title: 'Weekly Reports',
-    description: 'Comprehensive weekly emotional intelligence reports with personalized recommendations.',
-    subdomain: 'reports.moodmirror.ai',
-    features: ['Mood Distribution', 'Key Insights', 'Action Plans'],
-    icon: Calendar,
-    status: 'Available'
-  },
-  {
-    id: 'emotionalai',
-    title: 'Emotional AI Chat',
-    description: 'Conversational AI companion specialized in emotional support and mental wellness.',
-    subdomain: 'chat.moodmirror.ai',
-    features: ['24/7 Support', 'Personalized Responses', 'Crisis Detection'],
+    id: 'chat',
+    title: 'AI Chat',
+    description: 'Advanced conversational AI companion for natural conversations and assistance.',
+    subdomain: 'chat.onelastai.com',
+    features: ['Natural Language', 'Context Awareness', 'Multi-Modal'],
     icon: MessageCircle,
-    status: 'Beta'
+    status: 'Available',
+    color: 'from-blue-500 to-cyan-500'
   },
   {
-    id: 'voiceemotion',
-    title: 'Voice Emotion AI',
-    description: 'Real-time voice emotion analysis with advanced speech processing capabilities.',
-    subdomain: 'voice.moodmirror.ai',
-    features: ['Real-time Processing', 'Emotion Recognition', 'Voice Patterns'],
-    icon: Mic,
-    status: 'Coming Soon'
+    id: 'mood',
+    title: 'Mood Analyzer',
+    description: 'AI-powered mood detection and emotional intelligence analysis.',
+    subdomain: 'mood.onelastai.com',
+    features: ['Emotion Recognition', 'Sentiment Analysis', 'Wellness Insights'],
+    icon: Heart,
+    status: 'Available',
+    color: 'from-pink-500 to-rose-500'
   },
   {
-    id: 'visualemotion',
-    title: 'Visual Emotion AI',
-    description: 'Computer vision-based emotional analysis through facial expressions and body language.',
-    subdomain: 'vision.moodmirror.ai',
-    features: ['Facial Analysis', 'Body Language', 'Micro-expressions'],
-    icon: Camera,
-    status: 'Coming Soon'
+    id: 'visual',
+    title: 'Visual AI',
+    description: 'Computer vision and image processing capabilities for visual content creation.',
+    subdomain: 'visual.onelastai.com',
+    features: ['Image Generation', 'Object Detection', 'Style Transfer'],
+    icon: Eye,
+    status: 'Available',
+    color: 'from-purple-500 to-violet-500'
   },
   {
-    id: 'wellnesssocial',
-    title: 'Wellness Community',
-    description: 'Connect with others on similar emotional wellness journeys in a supportive environment.',
-    subdomain: 'community.moodmirror.ai',
-    features: ['Peer Support', 'Group Sessions', 'Anonymous Sharing'],
-    icon: Users,
-    status: 'Coming Soon'
+    id: 'creator',
+    title: 'Creator Tools',
+    description: 'Comprehensive suite of AI-powered tools for content creators and artists.',
+    subdomain: 'creator.onelastai.com',
+    features: ['Content Generation', 'Design Tools', 'Creative AI'],
+    icon: PenTool,
+    status: 'Available',
+    color: 'from-orange-500 to-red-500'
   },
   {
-    id: 'apianalytics',
-    title: 'API Analytics Dashboard',
-    description: 'Comprehensive API usage metrics, performance monitoring, and analytics insights.',
-    subdomain: 'analytics.moodmirror.ai',
-    features: ['Usage Metrics', 'Performance Monitoring', 'Error Tracking'],
+    id: 'memory',
+    title: 'Memory AI',
+    description: 'Intelligent note-taking and memory management with AI-powered organization.',
+    subdomain: 'memory.onelastai.com',
+    features: ['Smart Notes', 'Knowledge Graph', 'Memory Recall'],
+    icon: Memory,
+    status: 'Available',
+    color: 'from-green-500 to-emerald-500'
+  },
+  {
+    id: 'ip',
+    title: 'IP Tools',
+    description: 'Network utilities and IP address tools for developers and network administrators.',
+    subdomain: 'ip.onelastai.com',
+    features: ['IP Lookup', 'Network Analysis', 'Security Tools'],
+    icon: NetworkX,
+    status: 'Available',
+    color: 'from-cyan-500 to-blue-500'
+  },
+  {
+    id: 'blog',
+    title: 'AI Blog',
+    description: 'Latest insights, tutorials, and updates from the One Last AI community.',
+    subdomain: 'blog.onelastai.com',
+    features: ['AI News', 'Tutorials', 'Community Posts'],
+    icon: FileText,
+    status: 'Available',
+    color: 'from-gray-500 to-slate-500'
+  },
+  {
+    id: 'analytics',
+    title: 'Analytics Dashboard',
+    description: 'Comprehensive analytics and monitoring for API usage and platform metrics.',
+    subdomain: 'analytics.onelastai.com',
+    features: ['Usage Metrics', 'Performance Monitoring', 'Real-time Data'],
     icon: ChartBar,
-    status: 'Available'
-  },
-  {
-    id: 'therapybot',
-    title: 'AI Therapy Assistant',
-    description: 'Advanced therapeutic AI trained in evidence-based therapeutic techniques and interventions.',
-    subdomain: 'therapy.moodmirror.ai',
-    features: ['CBT Techniques', 'Guided Sessions', 'Progress Tracking'],
-    icon: Bot,
-    status: 'Development'
-  }
+    status: 'Available',
+    color: 'from-indigo-500 to-purple-500'
 ]
 
 const getStatusColor = (status: string) => {
@@ -103,8 +116,17 @@ interface ModulesSectionProps {
 }
 
 export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
+  const handleModuleClick = (module: any) => {
+    if (module.status === 'Available') {
+      // Navigate to the subdomain
+      window.open(`https://${module.subdomain}`, '_blank')
+    } else if (onModuleSelect) {
+      onModuleSelect(module.id)
+    }
+  }
+
   return (
-    <section className="py-16 px-4 relative z-10">
+    <section id="modules-section" className="py-16 px-4 relative z-10">
       <div className="max-w-7xl mx-auto">
         {/* Available Modules Header */}
         <motion.div
@@ -115,10 +137,10 @@ export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4 gradient-text">
-            AI Emotional Intelligence Modules
+            AI Digital Friend Modules
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose from our specialized AI modules, each designed to enhance your emotional awareness and mental wellness
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Explore our comprehensive suite of AI-powered tools and services. Each module is designed to enhance your digital experience and productivity.
           </p>
         </motion.div>
 
@@ -134,11 +156,11 @@ export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-accent/50 transition-all duration-300 glow-effect group">
+                <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-accent/50 transition-all duration-300 glow-effect group cursor-pointer">
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between mb-3">
-                      <div className="p-2.5 rounded-lg bg-primary/20">
-                        <IconComponent size={20} className="text-accent" />
+                      <div className={`p-2.5 rounded-lg bg-gradient-to-r ${module.color}`}>
+                        <IconComponent size={20} className="text-white" />
                       </div>
                       <Badge className={getStatusColor(module.status)}>
                         {module.status}
@@ -162,7 +184,7 @@ export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
                         <ul className="text-xs text-muted-foreground space-y-1">
                           {module.features.map((feature, idx) => (
                             <li key={idx} className="flex items-center">
-                              <div className="w-1 h-1 rounded-full bg-accent mr-2" />
+                              <div className={`w-1 h-1 rounded-full bg-gradient-to-r ${module.color} mr-2`} />
                               {feature}
                             </li>
                           ))}
@@ -170,19 +192,9 @@ export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
                       </div>
 
                       <Button 
-                        className={`w-full text-sm ${
-                          module.status === 'Available' 
-                            ? 'bg-primary hover:bg-primary/90' 
-                            : module.status === 'Beta'
-                            ? 'bg-yellow-600 hover:bg-yellow-600/90'
-                            : 'bg-secondary hover:bg-secondary/90'
-                        }`}
-                        disabled={module.status === 'Coming Soon' || module.status === 'Development'}
-                        onClick={() => {
-                          if ((module.status === 'Available' || module.status === 'Beta') && onModuleSelect) {
-                            onModuleSelect(module.id)
-                          }
-                        }}
+                        className={`w-full text-sm bg-gradient-to-r ${module.color} hover:opacity-90 text-white border-0`}
+                        disabled={module.status !== 'Available'}
+                        onClick={() => handleModuleClick(module)}
                       >
                         {module.status === 'Available' ? (
                           <>
@@ -217,7 +229,7 @@ export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
           className="text-center mt-12"
         >
           <p className="text-muted-foreground">
-            More specialized AI modules are in development. Each module will be available as a standalone application.
+            Each module is accessible via its dedicated subdomain. More specialized AI modules are in development.
           </p>
         </motion.div>
       </div>

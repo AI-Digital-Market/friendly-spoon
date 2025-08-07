@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Heart, Brain, Sparkles } from '@phosphor-icons/react'
+import { Brain, Sparkles, Robot, Heart, Eye, MessageCircle, Memory, ArrowDown } from '@phosphor-icons/react'
 
 interface HeroSectionProps {
   onExploreModules?: () => void
@@ -8,20 +8,8 @@ interface HeroSectionProps {
 
 export function HeroSection({ onExploreModules }: HeroSectionProps) {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-4 relative">
-      {/* Platform Name at Top */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="absolute top-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="text-[10px] font-bold tracking-widest uppercase platform-name">
-          One Last AI
-        </div>
-      </motion.div>
-
-      <div className="max-w-6xl mx-auto text-center relative z-10 mt-24">
+    <section className="min-h-screen flex flex-col items-center justify-center px-4 relative pt-20">
+      <div className="max-w-6xl mx-auto text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -32,12 +20,12 @@ export function HeroSection({ onExploreModules }: HeroSectionProps) {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className="p-3 rounded-xl bg-gradient-to-br from-primary to-secondary shadow-2xl glow-effect"
+              className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-2xl glow-effect"
             >
-              <Heart size={28} color="white" weight="fill" />
+              <Robot size={32} color="white" weight="fill" />
             </motion.div>
-            <h1 className="text-2xl md:text-3xl font-bold gradient-text">
-              Mood Mirror AI
+            <h1 className="text-4xl md:text-6xl font-bold gradient-text">
+              AI Digital Friend
             </h1>
           </div>
 
@@ -45,18 +33,20 @@ export function HeroSection({ onExploreModules }: HeroSectionProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed"
           >
-            Advanced AI Platform for Emotional Intelligence and Mental Wellness
+            Your comprehensive AI companion platform with powerful modules for chat, creativity, 
+            mood analysis, visual AI, and intelligent lifestyle assistance.
           </motion.p>
 
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto"
+            className="text-lg text-muted-foreground mb-12 max-w-3xl mx-auto"
           >
-            Experience multiple specialized AI agents designed to understand, analyze, and improve your emotional well-being through cutting-edge technology.
+            Experience 6 specialized AI modules designed to understand, analyze, and enhance your digital life. 
+            Start with 3 free requests per module, then subscribe for unlimited access to transform your AI experience.
           </motion.p>
 
           <motion.div
