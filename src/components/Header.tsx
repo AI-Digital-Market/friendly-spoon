@@ -10,9 +10,10 @@ interface HeaderProps {
   onNavigateHome?: () => void
   currentPage?: string
   onNavigate?: (page: string) => void
+  onNavigateAuth?: (authPage: string) => void
 }
 
-export function Header({ onNavigateHome, currentPage = 'home', onNavigate }: HeaderProps) {
+export function Header({ onNavigateHome, currentPage = 'home', onNavigate, onNavigateAuth }: HeaderProps) {
   const handleLogoClick = () => {
     if (currentPage !== 'home' && onNavigateHome) {
       onNavigateHome()
@@ -111,13 +112,25 @@ export function Header({ onNavigateHome, currentPage = 'home', onNavigate }: Hea
               </DropdownMenuContent>
             </DropdownMenu>
             
-            <Button 
-              variant="outline" 
-              size="sm"
-              className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10"
-            >
-              Get Started
-            </Button>
+            {/* Authentication Buttons */}
+            <div className="flex items-center gap-2">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                className="text-gray-300 hover:text-white"
+                onClick={() => onNavigateAuth?.('signin')}
+              >
+                Sign In
+              </Button>
+              <Button 
+                variant="outline" 
+                size="sm"
+                className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10"
+                onClick={() => onNavigateAuth?.('signup')}
+              >
+                Sign Up
+              </Button>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}

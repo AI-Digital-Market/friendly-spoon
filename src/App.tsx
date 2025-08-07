@@ -105,7 +105,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="privacy" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="privacy" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <PrivacyPolicyPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
@@ -117,7 +117,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="terms" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="terms" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <TermsConditionsPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
@@ -129,7 +129,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="about" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="about" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <AboutUsPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
@@ -141,7 +141,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="upcoming" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="upcoming" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <UpcomingModulesPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
@@ -153,7 +153,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="onelastai" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="onelastai" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <OneLastAIModulesPage onBack={() => {
           setCurrentPage('upcoming')
           window.history.pushState({}, '', '/upcoming-modules')
@@ -168,7 +168,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="onemanarmy" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="onemanarmy" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <OneManArmyPage onBack={() => {
           setCurrentPage('upcoming')
           window.history.pushState({}, '', '/upcoming-modules')
@@ -183,7 +183,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="contact" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="contact" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <ContactUsPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
@@ -195,7 +195,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="support" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="support" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <SupportTicketPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
@@ -207,7 +207,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="suggestions" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="suggestions" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <SuggestionsPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
@@ -292,7 +292,7 @@ function App() {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="mood" onNavigate={handleNavigation} />
+        <Header onNavigateHome={handleBackToHome} currentPage="mood" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <MoodAnalyzerPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
@@ -303,9 +303,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ParticleBackground />
-      <Header onNavigateHome={handleBackToHome} currentPage="home" onNavigate={handleNavigation} />
-      
-      <main className="relative z-10">
+        <Header onNavigateHome={handleBackToHome} currentPage="home" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />      <main className="relative z-10">
         <HomePage 
           onNavigate={handleNavigation} 
           onNavigateAuth={handleAuthNavigation}
