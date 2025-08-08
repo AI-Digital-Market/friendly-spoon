@@ -18,6 +18,7 @@ import { SignUpPage } from '@/components/SignUpPage'
 import { ForgotPasswordPage } from '@/components/ForgotPasswordPage'
 import { ResetPasswordPage } from '@/components/ResetPasswordPage'
 import { SubscriptionPage } from '@/components/SubscriptionPage'
+import { CinematicPage } from '@/components/CinematicPage'
 import { Toaster } from '@/components/ui/sonner'
 
 function App() {
@@ -49,6 +50,8 @@ function App() {
       setCurrentPage('mood')
     } else if (moduleId === 'analytics') {
       setCurrentPage('analytics')
+    } else if (moduleId === 'cinematic') {
+      setCurrentPage('cinematic')
     }
     // Other modules will navigate to their respective subdomains
   }
@@ -294,6 +297,18 @@ function App() {
         <ParticleBackground />
         <Header onNavigateHome={handleBackToHome} currentPage="mood" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
         <MoodAnalyzerPage onBack={handleBackToHome} />
+        <Footer />
+        <Toaster position="top-right" theme="dark" />
+      </div>
+    )
+  }
+
+  if (currentPage === 'cinematic') {
+    return (
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+        <Header onNavigateHome={handleBackToHome} currentPage="cinematic" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
+        <CinematicPage onBack={handleBackToHome} />
         <Footer />
         <Toaster position="top-right" theme="dark" />
       </div>

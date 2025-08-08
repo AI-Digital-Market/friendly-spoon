@@ -52,9 +52,9 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription }:
       isActive: true
     },
     {
-      id: 'visual',
-      title: 'Visual AI',
-      description: 'Powerful computer vision and image processing for analysis, generation, and enhancement.',
+      id: 'cinematic',
+      title: 'CINEMATIC',
+      description: 'AI storytelling & video generation with voice input, multilingual support, and scene understanding.',
       icon: Eye,
       color: 'from-purple-500 to-violet-500',
       requests: 3,
@@ -136,17 +136,20 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription }:
 }`
     },
     {
-      title: 'Visual AI Request',
-      code: `fetch('/api/visual', {
+      title: 'CINEMATIC AI Request',
+      code: `fetch('/api/cinematic', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer your-api-key'
   },
   body: JSON.stringify({
-    task: "analyze",
-    image_url: "https://example.com/image.jpg",
-    features: ["objects", "emotions", "text"]
+    task: "generate_video",
+    prompt: "A magical forest where animals can talk",
+    language: "en",
+    style: "cinematic",
+    voice: "narrator",
+    duration: 30
   })
 })`,
       response: `{
@@ -236,7 +239,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription }:
               className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto leading-relaxed"
             >
               Your comprehensive AI companion platform with powerful modules for chat, creativity, 
-              mood analysis, visual AI, and intelligent lifestyle assistance.
+              mood analysis, cinematic storytelling, and intelligent lifestyle assistance.
             </motion.p>
 
             <motion.p
