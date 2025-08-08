@@ -349,6 +349,15 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                 <Crown size={20} className="mr-2" />
                 Get Premium Access
               </Button>
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="border-green-500/50 hover:bg-green-500/10 text-green-400 px-6 py-3"
+                onClick={() => onNavigate?.('testpassage')}
+              >
+                <Lock size={20} className="mr-2" />
+                Test Auth
+              </Button>
             </motion.div>
 
             <motion.div

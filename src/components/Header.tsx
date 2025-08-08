@@ -118,7 +118,7 @@ export function Header({ onNavigateHome, currentPage = 'home', onNavigate, onNav
                 variant="ghost" 
                 size="sm"
                 className="text-gray-300 hover:text-white"
-                onClick={() => onNavigateAuth?.('signin')}
+                onClick={() => onNavigateAuth?.('auth')}
               >
                 Sign In
               </Button>
@@ -126,9 +126,9 @@ export function Header({ onNavigateHome, currentPage = 'home', onNavigate, onNav
                 variant="outline" 
                 size="sm"
                 className="border-blue-500/50 text-blue-400 hover:bg-blue-500/10"
-                onClick={() => onNavigateAuth?.('signup')}
+                onClick={() => onNavigateAuth?.('auth')}
               >
-                Sign Up
+                Secure Auth
               </Button>
             </div>
           </nav>

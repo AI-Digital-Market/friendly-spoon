@@ -21,6 +21,13 @@ import { SubscriptionPage } from '@/components/SubscriptionPage'
 import { CinematicPage } from '@/components/CinematicPage'
 import { BlogPage } from '@/components/BlogPage'
 import { MemoryPage } from '@/components/MemoryPage'
+import { IPInfoPage } from '@/components/IPInfoPage'
+import { ChatPage } from '@/components/ChatPage'
+import { CreatorToolsPage } from '@/components/CreatorToolsPage'
+import { APIAnalyticsDashboard } from '@/components/APIAnalyticsDashboard'
+import { AuthPage } from '@/components/AuthPage'
+import { AuthProvider } from '@/components/AuthProvider'
+import { PassageTest } from '@/components/PassageTest'
 import { Toaster } from '@/components/ui/sonner'
 
 function App() {
@@ -45,6 +52,8 @@ function App() {
   else if (currentPath.includes('/forgot-password')) activePage = 'forgotpassword'
   else if (currentPath.includes('/reset-password')) activePage = 'resetpassword'
   else if (currentPath.includes('/subscription')) activePage = 'subscription'
+  else if (currentPath.includes('/auth')) activePage = 'auth'
+  else if (currentPath.includes('/test-passage')) activePage = 'testpassage'
   else if (currentPage !== 'home') activePage = currentPage
 
   const handleModuleSelect = (moduleId: string) => {
@@ -52,12 +61,18 @@ function App() {
       setCurrentPage('mood')
     } else if (moduleId === 'analytics') {
       setCurrentPage('analytics')
-    } else if (moduleId === 'cinematic') {
+    } else if (moduleId === 'cinematic' || moduleId === 'visual') {
       setCurrentPage('cinematic')
     } else if (moduleId === 'blog') {
       setCurrentPage('blog')
     } else if (moduleId === 'memory') {
       setCurrentPage('memory')
+    } else if (moduleId === 'ip') {
+      setCurrentPage('ip')
+    } else if (moduleId === 'chat') {
+      setCurrentPage('chat')
+    } else if (moduleId === 'creator') {
+      setCurrentPage('creator')
     }
     // Other modules will navigate to their respective subdomains
   }
@@ -69,12 +84,21 @@ function App() {
 
   const handleNavigation = (page: string) => {
     setCurrentPage(page)
-    window.history.pushState({}, '', `/${page.replace(/([A-Z])/g, '-$1').toLowerCase()}`)
+    if (page === 'testpassage') {
+      window.history.pushState({}, '', '/testpassage')
+    } else {
+      window.history.pushState({}, '', `/${page.replace(/([A-Z])/g, '-$1').toLowerCase()}`)
+    }
   }
 
   const handleAuthNavigation = (authPage: string) => {
-    setCurrentPage(authPage)
-    window.history.pushState({}, '', `/${authPage}`)
+    if (authPage === 'auth') {
+      setCurrentPage('auth')
+      window.history.pushState({}, '', '/auth')
+    } else {
+      setCurrentPage(authPage)
+      window.history.pushState({}, '', `/${authPage}`)
+    }
   }
 
   const handleSignUpFromSignIn = () => {
@@ -297,6 +321,35 @@ function App() {
     )
   }
 
+  if (activePage === 'auth' || currentPage === 'auth') {
+    return (
+      <AuthProvider>
+        <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+          <ParticleBackground />
+          <AuthPage 
+            onBack={handleBackToHome}
+            onAuthSuccess={() => {
+              // Redirect to home or a specific page after successful auth
+              setCurrentPage('home')
+              window.history.pushState({}, '', '/')
+            }}
+          />
+          <Toaster position="top-right" theme="dark" />
+        </div>
+      </AuthProvider>
+    )
+  }
+
+  if (activePage === 'testpassage' || currentPage === 'testpassage') {
+    return (
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+        <PassageTest />
+        <Toaster position="top-right" theme="dark" />
+      </div>
+    )
+  }
+
   if (currentPage === 'mood') {
     return (
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -345,31 +398,81 @@ function App() {
     )
   }
 
-  return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
-      <ParticleBackground />
-        <Header onNavigateHome={handleBackToHome} currentPage="home" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />      <main className="relative z-10">
-        <HomePage 
-          onNavigate={handleNavigation} 
-          onNavigateAuth={handleAuthNavigation}
-          onNavigateSubscription={handleSubscription}
-          onModuleSelect={handleModuleSelect}
-        />
+  if (currentPage === 'ip') {
+    return (
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+        <Header onNavigateHome={handleBackToHome} currentPage="ip" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
+        <IPInfoPage onBack={handleBackToHome} />
         <Footer />
-      </main>
-      
-      <Toaster 
-        position="top-right"
-        theme="dark"
-        toastOptions={{
-          style: {
-            background: 'oklch(0.18 0.12 240)',
-            border: '1px solid oklch(0.3 0.15 240)',
-            color: 'oklch(0.92 0 0)',
-          }
-        }}
-      />
-    </div>
+        <Toaster position="top-right" theme="dark" />
+      </div>
+    )
+  }
+
+  if (currentPage === 'chat') {
+    return (
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+        <Header onNavigateHome={handleBackToHome} currentPage="chat" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
+        <ChatPage onBack={handleBackToHome} />
+        <Footer />
+        <Toaster position="top-right" theme="dark" />
+      </div>
+    )
+  }
+
+  if (currentPage === 'creator') {
+    return (
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+        <Header onNavigateHome={handleBackToHome} currentPage="creator" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
+        <CreatorToolsPage onBack={handleBackToHome} />
+        <Footer />
+        <Toaster position="top-right" theme="dark" />
+      </div>
+    )
+  }
+
+  if (currentPage === 'analytics') {
+    return (
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+        <Header onNavigateHome={handleBackToHome} currentPage="analytics" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
+        <APIAnalyticsDashboard onBack={handleBackToHome} />
+        <Footer />
+        <Toaster position="top-right" theme="dark" />
+      </div>
+    )
+  }
+
+  return (
+    <AuthProvider>
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+          <Header onNavigateHome={handleBackToHome} currentPage="home" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />      <main className="relative z-10">
+          <HomePage 
+            onNavigate={handleNavigation} 
+            onNavigateAuth={handleAuthNavigation}
+            onNavigateSubscription={handleSubscription}
+            onModuleSelect={handleModuleSelect}
+          />
+          <Footer />
+        </main>
+        
+        <Toaster 
+          position="top-right"
+          theme="dark"
+          toastOptions={{
+            style: {
+              background: 'oklch(0.18 0.12 240)',
+              border: '1px solid oklch(0.3 0.15 240)',
+              color: 'oklch(0.92 0 0)',
+            }
+          }}
+        />
+      </div>
+    </AuthProvider>
   )
 }
 

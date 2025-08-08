@@ -12,7 +12,7 @@ COPY tailwind.config.js ./
 COPY components.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm ci
 
 # Copy source code
 COPY src/ ./src/

@@ -14,7 +14,7 @@ import { useState, useRef, useEffect } from 'react'
 
 interface IPInfo {
   ip: string
-  type: 'IPv4' | 'IPv6' | 'Unknown'
+  type: 'IPv4' | 'IPv6'
   hostname?: string
   city?: string
   region?: string
@@ -59,7 +59,7 @@ export function IPInfoPage({ onBack }: IPInfoPageProps) {
   const [userIP, setUserIP] = useState<string>('')
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const generateMockIPData = (ip: string, type: 'IPv4' | 'IPv6' | 'Unknown'): IPInfo => {
+  const generateMockIPData = (ip: string, type: 'IPv4' | 'IPv6'): IPInfo => {
     // Generate realistic mock data based on IP
     const ipNum = ip.split('.').reduce((acc, octet) => acc + parseInt(octet), 0)
     const countries = ['United States', 'Canada', 'United Kingdom', 'Germany', 'France', 'Japan', 'Australia', 'Netherlands']

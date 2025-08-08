@@ -99,6 +99,7 @@ const modules = [
     icon: ChartBar,
     status: 'Available',
     color: 'from-indigo-500 to-purple-500'
+  }
 ]
 
 const getStatusColor = (status: string) => {
