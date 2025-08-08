@@ -1,3 +1,5 @@
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -28,7 +30,10 @@ interface MoodMessage {
 interface MoodAnalyzerPageProps {
   onBack?: () => void
 }
-
+/**
+ * Make sure the JSX namespace is available for TypeScript.
+ * If you are using React 17+ with the new JSX transform, ensure your tsconfig.json has "jsx": "react-jsx".
+ */
 export function MoodAnalyzerPage({ onBack }: MoodAnalyzerPageProps) {
   const [messages, setMessages] = useState<MoodMessage[]>([
     {
@@ -97,7 +102,7 @@ export function MoodAnalyzerPage({ onBack }: MoodAnalyzerPageProps) {
         mood: 'happy',
         confidence: 90,
         supportMessage: 'That\'s absolutely wonderful to hear! 😊 Your happiness is contagious and brings so much light to the world. Keep shining bright and spreading those positive vibes! Remember, these beautiful moments are what life is all about. Cherish this feeling!',
-        code: `// EMPATHY's Joy Detection & Amplification
+        codeExample: `// EMPATHY's Joy Detection & Amplification
 class ParentalJoyAnalyzer {
   detectHappiness(input, voiceTone, facialExpression) {
     const joyIndicators = this.analyzeJoySignals(input)
@@ -130,7 +135,7 @@ class ParentalJoyAnalyzer {
         mood: 'sad',
         confidence: 85,
         supportMessage: 'Oh sweetie, I can feel your pain and I\'m here for you. 🤗 It\'s okay to feel sad - even the strongest people have difficult days. Remember, storms don\'t last forever, but strong people like you do. You\'ve overcome challenges before, and you\'ll get through this too. I believe in you! 💪',
-        code: `// EMPATHY's Comfort & Healing Protocol
+        codeExample: `// EMPATHY's Comfort & Healing Protocol
 class ParentalComfortSystem {
   provideComfort(sadnessLevel, userNeeds) {
     const healingPlan = this.createHealingStrategy(sadnessLevel)
@@ -163,7 +168,7 @@ class ParentalComfortSystem {
         mood: 'angry',
         confidence: 88,
         supportMessage: 'I can sense your frustration, and it\'s completely valid to feel this way. 😤 Take a deep breath with me. Anger often shows us what we care about deeply. Let\'s channel this powerful energy into something positive. You\'re stronger than any situation, and I\'m here to help you work through this! 🌟',
-        code: `// EMPATHY's Anger Management & Redirection
+        codeExample: `// EMPATHY's Anger Management & Redirection
 class ParentalAngerGuide {
   processAnger(angerIntensity, triggerSource) {
     const coolingStrategy = this.createCalmingPlan(angerIntensity)
@@ -196,7 +201,7 @@ class ParentalAngerGuide {
         mood: 'anxious',
         confidence: 87,
         supportMessage: 'I can feel your worry, dear, and I want you to know that anxiety is your mind trying to protect you. 🤲 But remember, you are braver than you believe and stronger than you seem. Let\'s break this down together, one small step at a time. You\'ve got this, and I\'ve got you! 💝',
-        code: `// EMPATHY's Anxiety Soothing & Grounding
+        codeExample: `// EMPATHY's Anxiety Soothing & Grounding
 class ParentalAnxietyHealer {
   sootheAnxiety(anxietyLevel, worryTypes) {
     const groundingTechniques = this.activateGroundingProtocol()
@@ -229,7 +234,7 @@ class ParentalAnxietyHealer {
         mood: 'excited',
         confidence: 92,
         supportMessage: 'Your excitement is absolutely infectious! 🎉 I love seeing you this energized and passionate. This enthusiasm is your superpower - use it to create amazing things! Channel this beautiful energy wisely, and remember to enjoy every moment of this incredible feeling! ✨',
-        code: `// EMPATHY's Excitement Channeling & Support
+        codeExample: `// EMPATHY's Excitement Channeling & Support
 class ParentalExcitementGuide {
   harnesExcitement(energyLevel, passionSource) {
     const channeling = this.createFocusedPlan(energyLevel)
@@ -260,7 +265,7 @@ class ParentalExcitementGuide {
       mood: 'neutral',
       confidence: 70,
       supportMessage: 'I\'m here listening to you with my whole heart. 💝 Whatever you\'re feeling is valid and important. Take your time to share what\'s on your mind - I\'m here to support you through anything, just like a caring parent would. You matter so much! 🌟',
-      code: `// EMPATHY's Universal Care & Understanding
+      codeExample: `// EMPATHY's Universal Care & Understanding
 class ParentalUniversalSupport {
   provideUnconditionalCare(anyEmotion, userState) {
     const parentalLove = this.activateUnconditionalLove()
@@ -324,7 +329,7 @@ class ParentalUniversalSupport {
         type: 'text',
         mood: moodAnalysis.mood,
         confidence: moodAnalysis.confidence,
-        codeExample: moodAnalysis.code,
+        codeExample: moodAnalysis.codeExample,
         thinking: moodAnalysis.thinking
       }
       
@@ -833,250 +838,6 @@ class ParentalUniversalSupport {
             </Button>
           </div>
         )}
-      </div>
-    </div>
-  )
-}
-      console.error('Mood analysis error:', error)
-    } finally {
-      setIsAnalyzing(false)
-    }
-  }
-
-  const generatePersonalizedContent = async (moodEntry: MoodEntry) => {
-    try {
-      const prompt = spark.llmPrompt`
-        Based on someone feeling ${moodEntry.mood}, create personalized content to help them.
-        
-        Current mood: ${moodEntry.mood}
-        Context: "${moodEntry.text}"
-        
-        Generate helpful content that could be:
-        - An uplifting quote or affirmation
-        - A brief mindfulness exercise
-        - A creative prompt or activity suggestion
-        - Words of encouragement or perspective
-        
-        Keep it concise (2-3 sentences max) and emotionally supportive.
-        Make it feel personal and understanding, not generic.
-      `
-      
-      const content = await spark.llm(prompt, 'gpt-4o')
-      
-      setCurrentMood(current => current ? { ...current, content } : null)
-      setMoodHistory(current => 
-        current.map(entry => 
-          entry.id === moodEntry.id ? { ...entry, content } : entry
-        )
-      )
-      
-    } catch (error) {
-      console.error('Content generation error:', error)
-    }
-  }
-
-  return (
-    <div className="min-h-screen bg-background text-foreground px-4 py-8">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center gap-4 mb-8">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={onBack}
-            className="border-border/50"
-          >
-            <ArrowLeft size={16} className="mr-2" />
-            Back to Home
-          </Button>
-          <div>
-            <h1 className="text-3xl font-bold gradient-text">Mood Analyzer</h1>
-            <p className="text-muted-foreground">Advanced AI-powered emotional analysis</p>
-          </div>
-        </div>
-
-        <div className="grid gap-8 lg:grid-cols-3">
-          {/* Main Input Section */}
-          <div className="lg:col-span-2">
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50 glow-effect">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Brain size={24} className="text-primary" />
-                  How are you feeling?
-                </CardTitle>
-                <CardDescription>
-                  Share your thoughts and let AI understand your emotional state
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Tabs value={selectedTab} onValueChange={setSelectedTab}>
-                  <TabsList className="grid w-full grid-cols-3 bg-background/50">
-                    <TabsTrigger value="text" className="flex items-center gap-2">
-                      <MessageCircle size={16} />
-                      Text
-                    </TabsTrigger>
-                    <TabsTrigger value="voice" className="flex items-center gap-2">
-                      <Mic size={16} />
-                      Voice
-                    </TabsTrigger>
-                    <TabsTrigger value="photo" className="flex items-center gap-2">
-                      <Camera size={16} />
-                      Photo
-                    </TabsTrigger>
-                  </TabsList>
-                  
-                  <TabsContent value="text" className="space-y-4">
-                    <Textarea
-                      placeholder="Tell me about your day, your feelings, or what's on your mind..."
-                      value={currentInput}
-                      onChange={(e) => setCurrentInput(e.target.value)}
-                      className="min-h-32 resize-none bg-background/50 border-border/50"
-                    />
-                    <Button 
-                      onClick={() => analyzeMood(currentInput)}
-                      disabled={isAnalyzing || !currentInput.trim()}
-                      className="w-full bg-primary hover:bg-primary/90"
-                      size="lg"
-                    >
-                      {isAnalyzing ? (
-                        <>
-                          <Brain size={20} className="mr-2 animate-pulse" />
-                          Analyzing your mood...
-                        </>
-                      ) : (
-                        <>
-                          <Sparkles size={20} className="mr-2" />
-                          Analyze My Mood
-                        </>
-                      )}
-                    </Button>
-                  </TabsContent>
-                  
-                  <TabsContent value="voice" className="space-y-4">
-                    <div className="text-center py-12 text-muted-foreground bg-background/30 rounded-lg">
-                      <Mic size={48} className="mx-auto mb-4 opacity-50" />
-                      <p className="text-lg font-medium mb-2">Voice Analysis Coming Soon!</p>
-                      <p className="text-sm">We're working on advanced voice emotion detection</p>
-                    </div>
-                  </TabsContent>
-                  
-                  <TabsContent value="photo" className="space-y-4">
-                    <div className="text-center py-12 text-muted-foreground bg-background/30 rounded-lg">
-                      <Camera size={48} className="mx-auto mb-4 opacity-50" />
-                      <p className="text-lg font-medium mb-2">Photo Mood Detection Coming Soon!</p>
-                      <p className="text-sm">Upload photos to detect facial emotions and body language</p>
-                    </div>
-                  </TabsContent>
-                </Tabs>
-              </CardContent>
-            </Card>
-
-            {/* Current Mood Analysis */}
-            <AnimatePresence>
-              {currentMood && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  className="mt-6"
-                >
-                  <Card className="bg-card/50 backdrop-blur-sm border-border/50 glow-effect">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <div className="text-2xl">
-                          {MOOD_EMOJIS[currentMood.mood as keyof typeof MOOD_EMOJIS]}
-                        </div>
-                        Your Current Mood
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <div className="flex items-center gap-3">
-                        <Badge 
-                          variant="outline" 
-                          className={`${MOOD_COLORS[currentMood.mood as keyof typeof MOOD_COLORS]} px-3 py-1`}
-                        >
-                          {currentMood.mood.charAt(0).toUpperCase() + currentMood.mood.slice(1)}
-                        </Badge>
-                        <div className="flex-1">
-                          <div className="text-sm text-muted-foreground mb-1">
-                            Confidence: {currentMood.confidence}%
-                          </div>
-                          <Progress value={currentMood.confidence} className="h-2" />
-                        </div>
-                      </div>
-                      
-                      {currentMood.content && (
-                        <motion.div
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          className="bg-background/50 p-4 rounded-lg border border-border/50"
-                        >
-                          <p className="text-sm leading-relaxed">{currentMood.content}</p>
-                        </motion.div>
-                      )}
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6">
-            {/* Stats */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 text-lg">
-                  <ChartLine size={20} className="text-accent" />
-                  Your Progress
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-center">
-                  <div className="text-3xl font-bold text-primary mb-2">
-                    {moodHistory.length}
-                  </div>
-                  <p className="text-muted-foreground text-sm">Mood Entries Tracked</p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Recent Moods */}
-            <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-              <CardHeader>
-                <CardTitle className="text-lg">Recent Moods</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3 max-h-64 overflow-y-auto">
-                  {moodHistory.length === 0 ? (
-                    <p className="text-muted-foreground text-sm text-center py-4">
-                      No mood entries yet. Share how you're feeling!
-                    </p>
-                  ) : (
-                    moodHistory.slice(0, 5).map((entry) => (
-                      <div key={entry.id} className="flex items-start gap-3 p-2 rounded-lg bg-background/30">
-                        <div className="text-lg">
-                          {MOOD_EMOJIS[entry.mood as keyof typeof MOOD_EMOJIS]}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="text-sm font-medium capitalize">{entry.mood}</span>
-                            <span className="text-xs text-muted-foreground">
-                              {new Date(entry.timestamp).toLocaleDateString()}
-                            </span>
-                          </div>
-                          <p className="text-xs text-muted-foreground line-clamp-2">
-                            {entry.text}
-                          </p>
-                        </div>
-                      </div>
-                    ))
-                  )}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
       </div>
     </div>
   )

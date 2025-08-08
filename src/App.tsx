@@ -19,6 +19,8 @@ import { ForgotPasswordPage } from '@/components/ForgotPasswordPage'
 import { ResetPasswordPage } from '@/components/ResetPasswordPage'
 import { SubscriptionPage } from '@/components/SubscriptionPage'
 import { CinematicPage } from '@/components/CinematicPage'
+import { BlogPage } from '@/components/BlogPage'
+import { MemoryPage } from '@/components/MemoryPage'
 import { Toaster } from '@/components/ui/sonner'
 
 function App() {
@@ -52,6 +54,10 @@ function App() {
       setCurrentPage('analytics')
     } else if (moduleId === 'cinematic') {
       setCurrentPage('cinematic')
+    } else if (moduleId === 'blog') {
+      setCurrentPage('blog')
+    } else if (moduleId === 'memory') {
+      setCurrentPage('memory')
     }
     // Other modules will navigate to their respective subdomains
   }
@@ -315,6 +321,30 @@ function App() {
     )
   }
 
+  if (currentPage === 'blog') {
+    return (
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+        <Header onNavigateHome={handleBackToHome} currentPage="blog" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
+        <BlogPage onBack={handleBackToHome} />
+        <Footer />
+        <Toaster position="top-right" theme="dark" />
+      </div>
+    )
+  }
+
+  if (currentPage === 'memory') {
+    return (
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <ParticleBackground />
+        <Header onNavigateHome={handleBackToHome} currentPage="memory" onNavigate={handleNavigation} onNavigateAuth={handleAuthNavigation} />
+        <MemoryPage onBack={handleBackToHome} />
+        <Footer />
+        <Toaster position="top-right" theme="dark" />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
       <ParticleBackground />
@@ -323,6 +353,7 @@ function App() {
           onNavigate={handleNavigation} 
           onNavigateAuth={handleAuthNavigation}
           onNavigateSubscription={handleSubscription}
+          onModuleSelect={handleModuleSelect}
         />
         <Footer />
       </main>

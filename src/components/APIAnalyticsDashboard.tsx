@@ -4,7 +4,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { useKV } from '@github/spark/hooks'
 import { 
   ChartBar, 
   Clock, 
@@ -91,7 +90,7 @@ interface APIAnalyticsDashboardProps {
 }
 
 export function APIAnalyticsDashboard({ onBack }: APIAnalyticsDashboardProps) {
-  const [usageStats, setUsageStats] = useKV<UsageStats>('api-usage-stats', {
+  const [usageStats, setUsageStats] = useState<UsageStats>({
     totalRequests: 3507,
     totalErrors: 56,
     avgResponseTime: 134,

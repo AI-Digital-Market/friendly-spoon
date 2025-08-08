@@ -17,16 +17,18 @@ import {
   Crown,
   Lock,
   CheckCircle,
-  X
+  X,
+  BookOpen
 } from '@phosphor-icons/react'
 
 interface HomePageProps {
   onNavigate?: (page: string) => void
   onNavigateAuth?: (authPage: string) => void
   onNavigateSubscription?: (plan?: string) => void
+  onModuleSelect?: (moduleId: string) => void
 }
 
-export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription }: HomePageProps) {
+export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, onModuleSelect }: HomePageProps) {
   const [showSubscriptionModal, setShowSubscriptionModal] = useState(false)
   const [apiDemoText, setApiDemoText] = useState('')
   const [currentDemo, setCurrentDemo] = useState(0)
@@ -70,11 +72,20 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription }:
       isActive: true
     },
     {
-      id: 'brain',
-      title: 'Knowledge AI',
-      description: 'Intelligent research assistant that processes information and provides comprehensive insights.',
+      id: 'blog',
+      title: 'AI BLOG',
+      description: 'Comprehensive AI knowledge hub with historical timelines, expert insights, and educational content.',
+      icon: BookOpen,
+      color: 'from-indigo-500 to-purple-500',
+      requests: 3,
+      isActive: true
+    },
+    {
+      id: 'memory',
+      title: 'MEMORY',
+      description: 'Your personal AI brain that remembers everything - passwords, contacts, notes. Perfect recall with just keywords!',
       icon: Brain,
-      color: 'from-green-500 to-emerald-500',
+      color: 'from-purple-500 to-violet-500',
       requests: 3,
       isActive: true
     },
@@ -162,6 +173,64 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription }:
   "confidence": 0.94,
   "processing_time": "1.2s"
 }`
+    },
+    {
+      title: 'Blog API Request',
+      code: `fetch('/api/blog', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer your-api-key'
+  },
+  params: {
+    category: "history",
+    limit: 10,
+    search: "neural networks"
+  }
+})`,
+      response: `{
+  "articles": [
+    {
+      "title": "The Complete History of AI",
+      "excerpt": "Journey through 70+ years...",
+      "author": "Dr. Sarah Chen",
+      "readTime": 25,
+      "category": "history",
+      "tags": ["AI History", "Timeline"],
+      "publishedAt": "2024-12-15T00:00:00Z"
+    }
+  ],
+  "total": 42,
+  "hasMore": true
+}`
+    },
+    {
+      title: 'Memory API Request',
+      code: `fetch('/api/memory', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer your-api-key'
+  },
+  body: JSON.stringify({
+    action: "store",
+    type: "password",
+    title: "Gmail Password",
+    content: "MySecurePassword123!",
+    tags: ["gmail", "email", "google"],
+    secure: true
+  })
+})`,
+      response: `{
+  "memory_id": "mem_abc123",
+  "status": "stored",
+  "encrypted": true,
+  "tags_extracted": ["gmail", "email", "google"],
+  "category": "accounts",
+  "searchable_keywords": ["gmail", "password", "email"],
+  "confidence": 0.98,
+  "timestamp": "2024-01-15T10:30:00Z"
+}`
     }
   ]
 
@@ -193,8 +262,13 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription }:
   }, [currentDemo])
 
   const handleModuleClick = (moduleId: string) => {
-    // For demo purposes, show subscription modal after 3 requests
-    setShowSubscriptionModal(true)
+    // Check if it's a working module that should navigate
+    if (['mood', 'cinematic', 'blog', 'memory'].includes(moduleId)) {
+      onModuleSelect?.(moduleId)
+    } else {
+      // For other modules, show subscription modal
+      setShowSubscriptionModal(true)
+    }
   }
 
   const handleSubscribe = () => {
