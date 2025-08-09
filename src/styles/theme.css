@@ -1,8 +1,3 @@
-/* Sidebar CSS variables */
-.sidebar-wrapper {
-  --sidebar-width: 16rem;
-  --sidebar-width-icon: 3rem;
-}
 @import "tailwindcss";
 
 @import '@radix-ui/colors/sage-dark.css' layer(base);
@@ -70,8 +65,13 @@
 @import '@radix-ui/colors/slate-dark-alpha.css' layer(base);
 
 @import 'tailwindcss/theme' layer(theme);
-
 @import 'tailwindcss/preflight' layer(base);
+
+/* Sidebar CSS variables */
+.sidebar-wrapper {
+  --sidebar-width: 16rem;
+  --sidebar-width-icon: 3rem;
+}
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
