@@ -2,25 +2,27 @@ version: '3.8'
 
 services:
   onelastai-web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: onelastai-platform
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./ssl:/etc/nginx/ssl:ro
-      - ./logs:/var/log/nginx
+      - ./ssl:/etc/nginx/ssl:ro         # SSL certs (read-only)
+      - ./logs:/var/log/nginx           # Nginx logs
     environment:
       - NODE_ENV=production
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
+      test: ["CMD", "curl", "-f", "http://localhost/"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
 
-  # Future backend services can be added here
+  # 🔮 Future backend service
   # onelastai-api:
   #   image: onelastai/api:latest
   #   container_name: onelastai-api
@@ -30,6 +32,8 @@ services:
   #     - NODE_ENV=production
   #     - DATABASE_URL=${DATABASE_URL}
   #   restart: unless-stopped
+  #   depends_on:
+  #     - onelastai-web
 
 networks:
   default:

@@ -15,7 +15,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-DOMAIN="onelastai.com"
+export DOMAIN="onelastai.com"
 APP_DIR="/opt/onelastai"
 SSL_DIR="/etc/nginx/ssl"
 LOG_DIR="/var/log/onelastai"
@@ -254,4 +254,5 @@ echo "• View logs: docker-compose logs -f"
 echo "• Restart: docker-compose restart"
 echo "• Update: git pull && docker-compose up -d --build"
 echo
+print_success "OneLastAI.com is ready to serve the world! 🚀"
 print_success "OneLastAI.com is ready to serve the world! 🚀"

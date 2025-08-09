@@ -810,16 +810,19 @@ class ParentalUniversalSupport {
                           <div className="bg-slate-900/50 rounded-lg p-4 border border-slate-600">
                             <h4 className="text-sm font-medium text-orange-400 mb-2">Mood Insights</h4>
                             <div className="space-y-2">
-                              {Array.from(new Set(messages.filter(m => m.mood).map(m => m.mood))).map(mood => (
-                                <div key={mood} className="flex items-center justify-between">
-                                  <span className="text-xs text-gray-400 flex items-center gap-1">
-                                    {getMoodEmoji(mood)} {mood}
-                                  </span>
-                                  <Badge variant="secondary" className={`${getMoodColor(mood)} text-xs`}>
-                                    {messages.filter(m => m.mood === mood).length}
-                                  </Badge>
-                                </div>
-                              ))}
+                              {Array.from(new Set(messages.filter(m => m.mood).map(m => m.mood))).map(mood => {
+                                const moodStr = mood ?? '';
+                                return moodStr ? (
+                                  <div key={moodStr} className="flex items-center justify-between">
+                                    <span className="text-xs text-gray-400 flex items-center gap-1">
+                                      {getMoodEmoji(moodStr)} {moodStr}
+                                    </span>
+                                    <Badge variant="secondary" className={`${getMoodColor(moodStr)} text-xs`}>
+                                      {messages.filter(m => m.mood === moodStr).length}
+                                    </Badge>
+                                  </div>
+                                ) : null;
+                              })}
                             </div>
                           </div>
                         </div>

@@ -1,45 +1,61 @@
-# Multi-stage build for OneLastAI.com Platform
-FROM node:18-alpine AS builder
+# 🔧 Build Stage
+FROM node:20-alpine AS builder
+
+# Update Alpine packages to latest security patches
+RUN apk update && apk upgrade
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
-COPY tsconfig.json ./
-COPY vite.config.ts ./
-COPY tailwind.config.js ./
-COPY components.json ./
+# Optional: system deps for sharp, sass, etc.
+RUN apk add --no-cache libc6-compat=1.2.5.2-r0
+
+# Copy config files
+COPY package*.json tsconfig.json vite.config.ts tailwind.config.js components.json ./
 
 # Install dependencies
 RUN npm ci
 
-# Copy source code
+# Copy source code and static assets
 COPY src/ ./src/
 COPY index.html ./
 COPY public/ ./public/
 
-# Build the application
+# Optional: copy env file (only if it exists)
+# (Comment out if you don't use .env.production)
+# COPY .env.production .env.production
+
+# Build the app
 RUN npm run build
 
-# Production stage
+
+# 🚀 Production Stage
 FROM nginx:alpine
 
-# Copy built assets from builder stage
+# Create a non-root user and group
+RUN addgroup -S appgroup && adduser -S appuser -G appgroup
+
+# Copy built assets
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy custom nginx configuration
+# Copy custom nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Create directory for SSL certificates (if needed)
-RUN mkdir -p /etc/nginx/ssl
+# Copy SSL certificates (if present)
+COPY ssl/ /etc/nginx/ssl/
 
-# Expose port 80 and 443
+# Change ownership of nginx directories to the non-root user
+RUN chown -R appuser:appgroup /usr/share/nginx/html /etc/nginx /etc/nginx/ssl
+
+# Expose ports
 EXPOSE 80 443
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
   CMD curl -f http://localhost/ || exit 1
 
-# Start nginx
+# Switch to non-root user
+USER appuser
+
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
