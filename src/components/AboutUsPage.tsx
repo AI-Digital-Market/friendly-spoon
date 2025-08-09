@@ -162,7 +162,7 @@ export function AboutUsPage({ onBack }: AboutUsPageProps) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Sparkles size={20} />
+                <Sparkle size={20} />
                 💡 Why AI Digital Friend?
               </CardTitle>
             </CardHeader>

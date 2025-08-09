@@ -192,11 +192,19 @@ async function processUserInput(input) {
     // Find matching response pattern
     for (const [key, pattern] of Object.entries(responses)) {
       if (pattern.triggers.some(trigger => input.includes(trigger))) {
-        return pattern
+        return {
+          content: pattern.response,
+          codeExample: pattern.code,
+          thinking: pattern.thinking
+        };
       }
     }
-    
-    return responses.default
+    const def = responses.default;
+    return {
+      content: def.response,
+      codeExample: def.code,
+      thinking: def.thinking
+    };
   }
 
   const sendMessage = async () => {
@@ -217,17 +225,15 @@ async function processUserInput(input) {
     // Simulate AI thinking delay
     setTimeout(() => {
       const aiResponse = generateResponse(inputMessage)
-      
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
         content: aiResponse.content,
         timestamp: new Date(),
         type: 'text',
-        codeExample: aiResponse.code,
+        codeExample: aiResponse.codeExample,
         thinking: aiResponse.thinking
       }
-      
       setMessages(prev => [...prev, assistantMessage])
       setIsThinking(false)
     }, 2000)
@@ -348,7 +354,7 @@ async function processUserInput(input) {
                   <div className="flex items-center justify-between">
                     <div>
                       <CardTitle className="flex items-center gap-2 text-white">
-                        <MessageCircle size={20} className="text-blue-400" />
+                        <ChatCircle size={20} className="text-blue-400" />
                         Chat with ARIA
                       </CardTitle>
                       <CardDescription className="text-gray-400">
@@ -506,7 +512,7 @@ async function processUserInput(input) {
                         disabled={!inputMessage.trim() || isThinking}
                         className="px-6 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white border-0"
                       >
-                        <Send size={20} />
+                        <PaperPlaneTilt size={20} />
                       </Button>
                     </div>
                     

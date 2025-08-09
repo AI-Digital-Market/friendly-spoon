@@ -206,7 +206,7 @@ export function APIAnalyticsDashboard({ onBack }: APIAnalyticsDashboardProps) {
                 <p className="text-sm text-muted-foreground">Uptime</p>
                 <p className="text-2xl font-bold text-green-400">{usageStats.uptime}%</p>
               </div>
-              <Activity size={24} className="text-green-400" />
+              <Pulse size={24} className="text-green-400" />
             </div>
           </CardContent>
         </Card>

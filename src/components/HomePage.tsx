@@ -7,7 +7,6 @@ import {
   Robot, 
   Heart, 
   Eye, 
-  ChatCircle, 
   Brain, 
   Palette, 
   ArrowDown, 
@@ -18,7 +17,8 @@ import {
   Lock,
   CheckCircle,
   X,
-  BookOpen
+  BookOpen,
+  ChatCircle
 } from '@phosphor-icons/react'
 
 interface HomePageProps {
@@ -39,7 +39,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       id: 'chat',
       title: 'AI Chat',
       description: 'Intelligent conversational AI that understands context and provides meaningful responses for any topic.',
-      icon: MessageCircle,
+      icon: ChatCircle,
       color: 'from-blue-500 to-cyan-500',
       requests: 3,
       isActive: true
@@ -72,11 +72,11 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       isActive: true
     },
     {
-      id: 'blog',
-      title: 'AI BLOG',
-      description: 'Comprehensive AI knowledge hub with historical timelines, expert insights, and educational content.',
-      icon: BookOpen,
-      color: 'from-indigo-500 to-purple-500',
+      id: 'mood',
+      title: 'Mood Analyzer',
+      description: 'Advanced emotional intelligence AI that analyzes your mood and provides personalized insights.',
+      icon: Heart,
+      color: 'from-pink-500 to-rose-500',
       requests: 3,
       isActive: true
     },
@@ -529,7 +529,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 text-white"
                 size="lg"
               >
-                <MessageCircle size={20} className="mr-2" />
+          <ChatCircle size={20} className="mr-2" />
                 Contact for API Access
               </Button>
             </motion.div>
@@ -568,7 +568,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                 onClick={() => onNavigate?.('contact')}
                 className="border-border hover:bg-accent px-8 py-3"
               >
-                <MessageCircle size={20} className="mr-2" />
+          <ChatCircle size={20} className="mr-2" />
                 Contact Us
               </Button>
             </div>

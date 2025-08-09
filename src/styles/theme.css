@@ -1,3 +1,8 @@
+/* Sidebar CSS variables */
+.sidebar-wrapper {
+  --sidebar-width: 16rem;
+  --sidebar-width-icon: 3rem;
+}
 @import "tailwindcss";
 
 @import '@radix-ui/colors/sage-dark.css' layer(base);

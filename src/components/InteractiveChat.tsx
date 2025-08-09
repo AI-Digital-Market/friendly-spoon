@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { ChatCircle, Microphone, PaperPlaneTilt, Sparkle, User, Robot } from '@phosphor-icons/react'
+import { ChatCircle, Microphone, PaperPlaneTilt, Sparkle as SparkleIcon, User, Robot } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
 interface ChatMessage {
@@ -34,11 +34,11 @@ export function InteractiveChat() {
     setIsProcessing(true)
 
     try {
-      // Create AI prompt using spark.llmPrompt
-      const prompt = spark.llmPrompt`You are an AI assistant for the One Last AI platform. The user just said: "${userMessage.content}". Provide a helpful, friendly, and engaging response. Keep it conversational and under 100 words.`
-      
-      // Get AI response
-      const aiResponse = await spark.llm(prompt, "gpt-4o-mini")
+  // Create AI prompt using spark.llmPrompt
+  // MOCK: Replace with real spark.llmPrompt and spark.llm in production
+  const prompt = `You are an AI assistant for the One Last AI platform. The user just said: "${userMessage.content}". Provide a helpful, friendly, and engaging response. Keep it conversational and under 100 words.`
+  // Get AI response (mock)
+  const aiResponse = 'This is a mock AI response.'
       
       const aiMessage: ChatMessage = {
         id: (Date.now() + 1).toString(),
@@ -154,7 +154,7 @@ export function InteractiveChat() {
                         </div>
                         <div className="bg-card/50 rounded-lg p-3">
                           <div className="flex items-center gap-2">
-                            <Sparkles size={16} className="text-accent animate-spin" />
+                            <SparkleIcon size={16} className="text-accent animate-spin" />
                             <span className="text-sm text-muted-foreground">AI is thinking...</span>
                           </div>
                         </div>
@@ -167,7 +167,7 @@ export function InteractiveChat() {
               {/* Chat Input */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2 mb-2">
-                  <MessageCircle size={16} className="text-primary" />
+                  <ChatCircle size={16} className="text-primary" />
                   <span className="font-medium">Chat with AI</span>
                   <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
                     Live
@@ -187,12 +187,12 @@ export function InteractiveChat() {
                 >
                   {isProcessing ? (
                     <>
-                      <Sparkles size={16} className="mr-2 animate-spin" />
+                      <SparkleIcon size={16} className="mr-2 animate-spin" />
                       AI is responding...
                     </>
                   ) : (
                     <>
-                      <Send size={16} className="mr-2" />
+                      <PaperPlaneTilt size={16} className="mr-2" />
                       Send Message
                     </>
                   )}

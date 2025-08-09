@@ -661,7 +661,7 @@ export function BlogPage({ onBack }: BlogPageProps) {
                   {/* Search */}
                   <div className="flex-1">
                     <div className="relative">
-                      <Search size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                      <MagnifyingGlass size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                       <input
                         type="text"
                         placeholder="Search articles, topics, or tags..."
@@ -820,7 +820,7 @@ export function BlogPage({ onBack }: BlogPageProps) {
               className="text-center py-16"
             >
               <div className="text-gray-400 mb-4">
-                <Search size={48} className="mx-auto mb-4" />
+                <MagnifyingGlass size={48} className="mx-auto mb-4" />
                 <h3 className="text-xl font-medium mb-2">No articles found</h3>
                 <p>Try adjusting your search or filter criteria.</p>
               </div>
