@@ -13,6 +13,9 @@ RUN apk add --no-cache libc6-compat
 # Copy config files
 COPY package*.json tsconfig.json vite.config.ts tailwind.config.js components.json ./
 
+# Install TypeScript globally (pre-setup)
+RUN npm install -g typescript
+
 # Install dependencies
 RUN npm ci
 
@@ -24,6 +27,9 @@ COPY public/ ./public/
 # Optional: copy env file (only if it exists)
 # (Comment out if you don't use .env.production)
 # COPY .env.production .env.production
+
+# Install TypeScript globally (ensure tsc available)
+RUN npm install -g typescript
 
 # Build the app
 RUN npm run build
