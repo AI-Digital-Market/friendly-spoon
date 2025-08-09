@@ -1,6 +1,5 @@
 import { ComponentProps } from "react"
-import ChevronLeft from "lucide-react/dist/esm/icons/chevron-left"
-import ChevronRight from "lucide-react/dist/esm/icons/chevron-right"
+// icons removed
 import { DayPicker } from "react-day-picker"
 
 import { cn } from "@/lib/utils"
@@ -60,10 +59,10 @@ function Calendar({
       }}
       components={{
         PreviousMonthButton: ({ className, ...props }) => (
-          <ChevronLeft className={cn("size-4", className)} {...props} />
+          <button className={cn("size-7", className)} {...props} aria-label="Previous Month">‹</button>
         ),
         NextMonthButton: ({ className, ...props }) => (
-          <ChevronRight className={cn("size-4", className)} {...props} />
+          <button className={cn("size-7", className)} {...props} aria-label="Next Month">›</button>
         ),
       }}
       {...props}

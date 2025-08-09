@@ -1,15 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { 
-  Article, BookOpen, Clock, User, Eye, Heart, Share, 
-  ArrowRight, Calendar, Tag, MagnifyingGlass, Funnel,
-  Lightning, Robot, Brain, Gear, Globe, Sparkle,
-  Link, Image as ImageIcon, Play, Download
-} from '@phosphor-icons/react'
-import { useState, useRef } from 'react'
+// Simplified: remove UI kit and icons
+import { useState } from 'react'
 
 interface BlogPost {
   id: string
@@ -320,12 +311,12 @@ export function BlogPage({ onBack }: BlogPageProps) {
   ]
 
   const categories = [
-    { id: 'all', name: 'All Posts', icon: BookOpen, count: blogPosts.length },
-    { id: 'history', name: 'AI History', icon: Clock, count: blogPosts.filter(p => p.category === 'history').length },
-    { id: 'technology', name: 'Technology', icon: Gear, count: blogPosts.filter(p => p.category === 'technology').length },
-    { id: 'future', name: 'Future', icon: Lightning, count: blogPosts.filter(p => p.category === 'future').length },
-    { id: 'tutorials', name: 'Tutorials', icon: BookOpen, count: blogPosts.filter(p => p.category === 'tutorials').length },
-    { id: 'insights', name: 'Insights', icon: Brain, count: blogPosts.filter(p => p.category === 'insights').length }
+    { id: 'all', name: 'All Posts', count: blogPosts.length },
+    { id: 'history', name: 'AI History', count: blogPosts.filter(p => p.category === 'history').length },
+    { id: 'technology', name: 'Technology', count: blogPosts.filter(p => p.category === 'technology').length },
+    { id: 'future', name: 'Future', count: blogPosts.filter(p => p.category === 'future').length },
+    { id: 'tutorials', name: 'Tutorials', count: blogPosts.filter(p => p.category === 'tutorials').length },
+    { id: 'insights', name: 'Insights', count: blogPosts.filter(p => p.category === 'insights').length }
   ]
 
   const filteredPosts = selectedCategory === 'all' 
@@ -376,13 +367,12 @@ export function BlogPage({ onBack }: BlogPageProps) {
           <div className="max-w-4xl mx-auto">
             
             {/* Back Button */}
-            <Button
+            <button
               onClick={closePost}
-              variant="outline"
-              className="mb-6 border-slate-600 text-gray-300 hover:bg-slate-800"
+              className="mb-6 border border-slate-600 text-gray-300 hover:bg-slate-800 rounded px-4 py-2"
             >
               ← Back to Blog
-            </Button>
+            </button>
 
             {/* Article Header */}
             <motion.div
@@ -397,13 +387,13 @@ export function BlogPage({ onBack }: BlogPageProps) {
               />
               
               <div className="flex flex-wrap items-center gap-2 mb-4">
-                <Badge variant="secondary" className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30">
+                <span className="inline-flex items-center rounded border border-indigo-500/30 bg-indigo-500/20 text-indigo-300 px-2 py-1 text-xs">
                   {selectedPost.category.charAt(0).toUpperCase() + selectedPost.category.slice(1)}
-                </Badge>
+                </span>
                 {selectedPost.tags.map(tag => (
-                  <Badge key={tag} variant="outline" className="border-slate-600 text-gray-300">
+                  <span key={tag} className="inline-flex items-center rounded border border-slate-600 text-gray-300 px-2 py-1 text-xs">
                     {tag}
-                  </Badge>
+                  </span>
                 ))}
               </div>
 
@@ -420,18 +410,9 @@ export function BlogPage({ onBack }: BlogPageProps) {
                   />
                   <span>{selectedPost.author.name}</span>
                 </div>
-                <div className="flex items-center gap-1">
-                  <Calendar size={16} />
-                  <span>{formatDate(selectedPost.publishedAt)}</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Clock size={16} />
-                  <span>{selectedPost.readTime} min read</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <Eye size={16} />
-                  <span>{selectedPost.views.toLocaleString()} views</span>
-                </div>
+                <div className="flex items-center gap-1"><span>📅</span><span>{formatDate(selectedPost.publishedAt)}</span></div>
+                <div className="flex items-center gap-1"><span>⏱️</span><span>{selectedPost.readTime} min read</span></div>
+                <div className="flex items-center gap-1"><span>👁️</span><span>{selectedPost.views.toLocaleString()} views</span></div>
               </div>
 
               <p className="text-xl text-gray-300 leading-relaxed">
@@ -492,10 +473,7 @@ export function BlogPage({ onBack }: BlogPageProps) {
               transition={{ delay: 0.5 }}
               className="mt-16 p-6 bg-slate-800/50 rounded-lg border border-slate-700"
             >
-              <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">
-                <Link size={24} className="text-indigo-400" />
-                References & Further Reading
-              </h3>
+              <h3 className="text-2xl font-bold mb-6 text-white flex items-center gap-2">🔗 References & Further Reading</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {selectedPost.references.map((ref, index) => (
                   <a
@@ -505,12 +483,7 @@ export function BlogPage({ onBack }: BlogPageProps) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-3 p-4 bg-slate-900/50 rounded-lg hover:bg-slate-700/50 transition-colors"
                   >
-                    <div className="text-indigo-400">
-                      {ref.type === 'book' && <BookOpen size={20} />}
-                      {ref.type === 'article' && <Article size={20} />}
-                      {ref.type === 'research' && <Brain size={20} />}
-                      {ref.type === 'video' && <Play size={20} />}
-                    </div>
+                    <div className="text-indigo-400">{ref.type}</div>
                     <div>
                       <p className="text-white font-medium">{ref.title}</p>
                       <p className="text-gray-400 text-sm capitalize">{ref.type}</p>
@@ -548,23 +521,10 @@ export function BlogPage({ onBack }: BlogPageProps) {
               transition={{ delay: 0.7 }}
               className="mt-8 flex items-center justify-center gap-4"
             >
-              <Button
-                onClick={() => toggleLike(selectedPost.id)}
-                variant="outline"
-                className={`border-slate-600 ${
-                  likedPosts.has(selectedPost.id) 
-                    ? 'bg-red-500/20 text-red-300 border-red-500/30' 
-                    : 'text-gray-300 hover:bg-slate-800'
-                }`}
-              >
-                <Heart size={16} className="mr-2" weight={likedPosts.has(selectedPost.id) ? 'fill' : 'regular'} />
-                {selectedPost.likes + (likedPosts.has(selectedPost.id) ? 1 : 0)}
-              </Button>
-              
-              <Button variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800">
-                <Share size={16} className="mr-2" />
-                Share
-              </Button>
+              <button onClick={() => toggleLike(selectedPost.id)} className={`border border-slate-600 rounded px-4 py-2 ${likedPosts.has(selectedPost.id) ? 'bg-red-500/20 text-red-300 border-red-500/30' : 'text-gray-300 hover:bg-slate-800'}`}>
+                {selectedPost.likes + (likedPosts.has(selectedPost.id) ? 1 : 0)} ❤
+              </button>
+              <button className="border border-slate-600 text-gray-300 hover:bg-slate-800 rounded px-4 py-2">Share</button>
             </motion.div>
           </div>
         </div>
@@ -604,7 +564,7 @@ export function BlogPage({ onBack }: BlogPageProps) {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="absolute -top-2 -right-2"
                 >
-                  <Article size={16} className="text-indigo-400" weight="fill" />
+                  <span className="text-indigo-400">AI</span>
                 </motion.div>
               </motion.div>
               <div>
@@ -627,22 +587,10 @@ export function BlogPage({ onBack }: BlogPageProps) {
                 historical deep-dives, and expert insights. From AI's pioneering days to future predictions.
               </p>
               <div className="flex flex-wrap justify-center gap-3">
-                <Badge variant="secondary" className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30">
-                  <BookOpen className="w-4 h-4 mr-1" />
-                  Expert Articles
-                </Badge>
-                <Badge variant="secondary" className="bg-purple-500/20 text-purple-300 border-purple-500/30">
-                  <Clock className="w-4 h-4 mr-1" />
-                  Historical Timeline
-                </Badge>
-                <Badge variant="secondary" className="bg-blue-500/20 text-blue-300 border-blue-500/30">
-                  <Brain className="w-4 h-4 mr-1" />
-                  Deep Insights
-                </Badge>
-                <Badge variant="secondary" className="bg-green-500/20 text-green-300 border-green-500/30">
-                  <Link className="w-4 h-4 mr-1" />
-                  Referenced Sources
-                </Badge>
+                <span className="inline-flex items-center rounded border border-indigo-500/30 bg-indigo-500/20 text-indigo-300 px-2 py-1 text-xs">Expert Articles</span>
+                <span className="inline-flex items-center rounded border border-purple-500/30 bg-purple-500/20 text-purple-300 px-2 py-1 text-xs">Historical Timeline</span>
+                <span className="inline-flex items-center rounded border border-blue-500/30 bg-blue-500/20 text-blue-300 px-2 py-1 text-xs">Deep Insights</span>
+                <span className="inline-flex items-center rounded border border-green-500/30 bg-green-500/20 text-green-300 px-2 py-1 text-xs">Referenced Sources</span>
               </div>
             </motion.div>
           </motion.div>
@@ -655,13 +603,13 @@ export function BlogPage({ onBack }: BlogPageProps) {
           
           {/* Search & Filter */}
           <div className="mb-8">
-            <Card className="bg-slate-800/50 border-slate-700 backdrop-blur-sm">
-              <CardContent className="p-6">
+            <div className="bg-slate-800/50 border border-slate-700 backdrop-blur-sm rounded-lg">
+              <div className="p-6">
                 <div className="flex flex-col md:flex-row gap-4">
                   {/* Search */}
                   <div className="flex-1">
                     <div className="relative">
-                      <MagnifyingGlass size={20} className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                      <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">⌕</span>
                       <input
                         type="text"
                         placeholder="Search articles, topics, or tags..."
@@ -674,29 +622,23 @@ export function BlogPage({ onBack }: BlogPageProps) {
 
                   {/* Category Filter */}
                   <div className="flex flex-wrap gap-2">
-                    {categories.map(category => {
-                      const IconComponent = category.icon
-                      return (
-                        <Button
+                    {categories.map(category => (
+                        <button
                           key={category.id}
-                          variant={selectedCategory === category.id ? "default" : "outline"}
-                          size="sm"
                           onClick={() => setSelectedCategory(category.id)}
                           className={`${
                             selectedCategory === category.id
                               ? 'bg-indigo-500 hover:bg-indigo-600 text-white border-indigo-500'
                               : 'border-slate-600 text-gray-300 hover:bg-slate-700'
-                          }`}
+                          } border px-3 py-1 rounded text-sm`}
                         >
-                          <IconComponent size={16} className="mr-2" />
                           {category.name} ({category.count})
-                        </Button>
-                      )
-                    })}
+                        </button>
+                    ))}
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
 
           {/* Blog Posts Grid */}
@@ -717,7 +659,7 @@ export function BlogPage({ onBack }: BlogPageProps) {
                   className="group cursor-pointer"
                   onClick={() => openPost(post)}
                 >
-                  <Card className="h-full bg-slate-800/50 border-slate-700 backdrop-blur-sm hover:bg-slate-700/50 transition-all duration-300 hover:scale-105">
+                  <div className="h-full bg-slate-800/50 border border-slate-700 rounded-lg backdrop-blur-sm hover:bg-slate-700/50 transition-all duration-300 hover:scale-105">
                     {/* Featured Image */}
                     <div className="relative overflow-hidden rounded-t-lg">
                       <img 
@@ -726,39 +668,36 @@ export function BlogPage({ onBack }: BlogPageProps) {
                         className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                       />
                       <div className="absolute top-4 left-4">
-                        <Badge variant="secondary" className="bg-indigo-500/20 text-indigo-300 border-indigo-500/30">
+                        <span className="inline-flex items-center rounded border border-indigo-500/30 bg-indigo-500/20 text-indigo-300 px-2 py-1 text-xs">
                           {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
-                        </Badge>
+                        </span>
                       </div>
                       <div className="absolute top-4 right-4 flex items-center gap-2">
-                        <Badge variant="secondary" className="bg-black/20 text-white border-black/30">
-                          <Clock size={12} className="mr-1" />
-                          {post.readTime} min
-                        </Badge>
+                        <span className="inline-flex items-center rounded border border-black/30 bg-black/20 text-white px-2 py-1 text-xs">{post.readTime} min</span>
                       </div>
                     </div>
 
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-white group-hover:text-indigo-300 transition-colors line-clamp-2">
+                    <div className="pb-3 px-6 pt-4">
+                      <h3 className="text-white group-hover:text-indigo-300 transition-colors line-clamp-2 text-lg font-semibold">
                         {post.title}
-                      </CardTitle>
-                      <CardDescription className="text-gray-400 line-clamp-3">
+                      </h3>
+                      <p className="text-gray-400 line-clamp-3 mt-1">
                         {post.excerpt}
-                      </CardDescription>
-                    </CardHeader>
+                      </p>
+                    </div>
 
-                    <CardContent className="pt-0">
+                    <div className="pt-0 px-6 pb-6">
                       {/* Tags */}
                       <div className="flex flex-wrap gap-1 mb-4">
                         {post.tags.slice(0, 3).map(tag => (
-                          <Badge key={tag} variant="outline" className="border-slate-600 text-gray-400 text-xs">
+                          <span key={tag} className="inline-flex items-center rounded border border-slate-600 text-gray-400 text-xs px-2 py-1">
                             {tag}
-                          </Badge>
+                          </span>
                         ))}
                         {post.tags.length > 3 && (
-                          <Badge variant="outline" className="border-slate-600 text-gray-400 text-xs">
+                          <span className="inline-flex items-center rounded border border-slate-600 text-gray-400 text-xs px-2 py-1">
                             +{post.tags.length - 3}
-                          </Badge>
+                          </span>
                         )}
                       </div>
 
@@ -776,10 +715,7 @@ export function BlogPage({ onBack }: BlogPageProps) {
                         <div className="flex items-center justify-between text-sm text-gray-400">
                           <span>{formatDate(post.publishedAt)}</span>
                           <div className="flex items-center gap-4">
-                            <div className="flex items-center gap-1">
-                              <Eye size={14} />
-                              <span>{post.views.toLocaleString()}</span>
-                            </div>
+                            <div className="flex items-center gap-1"><span>👁️</span><span>{post.views.toLocaleString()}</span></div>
                             <button
                               onClick={(e) => {
                                 e.stopPropagation()
@@ -789,8 +725,7 @@ export function BlogPage({ onBack }: BlogPageProps) {
                                 likedPosts.has(post.id) ? 'text-red-400' : ''
                               }`}
                             >
-                              <Heart size={14} weight={likedPosts.has(post.id) ? 'fill' : 'regular'} />
-                              <span>{post.likes + (likedPosts.has(post.id) ? 1 : 0)}</span>
+                              <span>❤</span><span>{post.likes + (likedPosts.has(post.id) ? 1 : 0)}</span>
                             </button>
                           </div>
                         </div>
@@ -799,14 +734,11 @@ export function BlogPage({ onBack }: BlogPageProps) {
                       {/* Read More */}
                       <div className="mt-4 pt-4 border-t border-slate-700">
                         <div className="flex items-center justify-between">
-                          <span className="text-indigo-400 group-hover:text-indigo-300 font-medium">
-                            Read Article
-                          </span>
-                          <ArrowRight size={16} className="text-indigo-400 group-hover:translate-x-1 transition-transform" />
+                          <span className="text-indigo-400 group-hover:text-indigo-300 font-medium">Read Article →</span>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </AnimatePresence>
@@ -819,8 +751,8 @@ export function BlogPage({ onBack }: BlogPageProps) {
               animate={{ opacity: 1 }}
               className="text-center py-16"
             >
-              <div className="text-gray-400 mb-4">
-                <MagnifyingGlass size={48} className="mx-auto mb-4" />
+              <div className="text-gray-400 mb-4 text-center">
+                <div className="mx-auto mb-4 text-5xl">⌕</div>
                 <h3 className="text-xl font-medium mb-2">No articles found</h3>
                 <p>Try adjusting your search or filter criteria.</p>
               </div>
@@ -831,9 +763,9 @@ export function BlogPage({ onBack }: BlogPageProps) {
         {/* Back Button */}
         {onBack && (
           <div className="text-center mt-12">
-            <Button onClick={onBack} variant="outline" className="border-slate-600 text-gray-300 hover:bg-slate-800">
+            <button onClick={onBack} className="border border-slate-600 text-gray-300 hover:bg-slate-800 rounded px-4 py-2">
               ← Back to Home
-            </Button>
+            </button>
           </div>
         )}
       </div>

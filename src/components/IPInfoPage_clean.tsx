@@ -4,17 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
-import { 
-  MagnifyingGlass, Globe, MapPin, Shield, Warning, CheckCircle, 
-  Code, Lightning, Copy, Download, Share, Info, 
-  DesktopTower, WifiHigh, Buildings, Flag, Clock,
-  Eye, Lock, X, ArrowRight, Sparkle
-} from '@phosphor-icons/react'
+// Icons removed per requirement
 import { useState, useRef, useEffect } from 'react'
 
 interface IPInfo {
   ip: string
-  type: 'IPv4' | 'IPv6'
+  type: 'IPv4' | 'IPv6' | 'Unknown'
   hostname?: string
   city?: string
   region?: string
@@ -59,7 +54,7 @@ export function IPInfoPage({ onBack }: IPInfoPageProps) {
   const [userIP, setUserIP] = useState<string>('')
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const generateMockIPData = (ip: string, type: 'IPv4' | 'IPv6'): IPInfo => {
+  const generateMockIPData = (ip: string, type: 'IPv4' | 'IPv6' | 'Unknown'): IPInfo => {
     // Generate realistic mock data based on IP
     const ipNum = ip.split('.').reduce((acc, octet) => acc + parseInt(octet), 0)
     const countries = ['United States', 'Canada', 'United Kingdom', 'Germany', 'France', 'Japan', 'Australia', 'Netherlands']
@@ -348,14 +343,14 @@ class IPAnalyzer {
   }
 
   const getThreatIcon = (level: string) => {
-    switch (level) {
-      case 'safe': return <CheckCircle size={16} className="text-green-400" />
-      case 'low': return <Info size={16} className="text-yellow-400" />
-      case 'medium': return <Warning size={16} className="text-orange-400" />
-      case 'high': return <Shield size={16} className="text-red-400" />
-      case 'critical': return <Lock size={16} className="text-purple-400" />
-      default: return <Info size={16} className="text-gray-400" />
+    const map: Record<string, string> = {
+      safe: '✓',
+      low: 'i',
+      medium: '!',
+      high: '⚠',
+      critical: '×',
     }
+    return <span>{map[level] ?? 'i'}</span>
   }
 
   useEffect(() => {
@@ -377,11 +372,7 @@ class IPAnalyzer {
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-3">
-              {onBack && (
-                <Button variant="ghost" onClick={onBack} className="text-gray-300 hover:text-white">
-                  <ArrowRight size={20} className="rotate-180" />
-                </Button>
-              )}
+              {onBack && (<Button variant="ghost" onClick={onBack} className="text-gray-300 hover:text-white">←</Button>)}
               <div>
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
                   IP Intelligence
@@ -397,7 +388,6 @@ class IPAnalyzer {
           <Card className="bg-slate-800/50 border-slate-600 mb-8">
             <CardHeader>
               <CardTitle className="text-white flex items-center gap-2">
-                <MagnifyingGlass size={20} className="text-cyan-400" />
                 IP Address Analyzer
               </CardTitle>
               <CardDescription className="text-gray-400">
@@ -430,7 +420,6 @@ class IPAnalyzer {
                     </div>
                   ) : (
                     <div className="flex items-center gap-2">
-                      <MagnifyingGlass size={16} />
                       Analyze
                     </div>
                   )}
@@ -439,8 +428,7 @@ class IPAnalyzer {
               
               {userIP && (
                 <div className="flex items-center gap-2 text-sm text-gray-400">
-                  <Globe size={14} />
-                  Your IP: {userIP}
+                  <span>🌐</span> Your IP: {userIP}
                   <Button 
                     variant="ghost" 
                     size="sm" 
@@ -472,7 +460,6 @@ class IPAnalyzer {
                   <Card className="bg-slate-800/50 border-slate-600">
                     <CardHeader>
                       <CardTitle className="text-white flex items-center gap-2">
-                        <Globe size={20} className="text-cyan-400" />
                         IP Information
                       </CardTitle>
                     </CardHeader>
@@ -513,7 +500,7 @@ class IPAnalyzer {
                           <div>
                             <label className="text-sm text-gray-400">Reputation Score</label>
                             <div className="flex items-center gap-2">
-                              <Progress 
+                              <Progress
                                 value={currentAnalysis.info.reputation || 0} 
                                 className="flex-1 bg-slate-700"
                               />
@@ -542,7 +529,6 @@ class IPAnalyzer {
                   <Card className="bg-slate-800/50 border-slate-600">
                     <CardHeader>
                       <CardTitle className="text-white flex items-center gap-2">
-                        <Lightning size={20} className="text-yellow-400" />
                         Security Recommendations
                       </CardTitle>
                     </CardHeader>
@@ -551,7 +537,7 @@ class IPAnalyzer {
                       <div className="space-y-3">
                         {currentAnalysis.recommendations.map((rec, index) => (
                           <div key={index} className="flex items-start gap-3 p-3 bg-slate-900/50 rounded-lg">
-                            <Sparkle size={16} className="text-yellow-400 mt-0.5 flex-shrink-0" />
+                            <span className="text-yellow-400 mt-0.5 flex-shrink-0">•</span>
                             <p className="text-gray-300">{rec}</p>
                           </div>
                         ))}
@@ -566,7 +552,6 @@ class IPAnalyzer {
                     <CardHeader>
                       <div className="flex items-center justify-between">
                         <CardTitle className="text-white flex items-center gap-2">
-                          <Code size={20} className="text-green-400" />
                           Analysis Code
                         </CardTitle>
                         <Button
@@ -575,7 +560,7 @@ class IPAnalyzer {
                           onClick={() => setShowCode(!showCode)}
                           className="text-gray-400 hover:text-white"
                         >
-                          <X size={16} />
+                          ×
                         </Button>
                       </div>
                       <CardDescription className="text-gray-400">
@@ -588,7 +573,6 @@ class IPAnalyzer {
                         {/* Thinking Process */}
                         <div className="bg-slate-900/50 border border-slate-600 rounded-lg p-3">
                           <div className="flex items-center gap-2 mb-2">
-                            <Lightning size={14} className="text-cyan-400" />
                             <span className="text-xs text-cyan-400 font-medium">Analysis Process</span>
                           </div>
                           <p className="text-xs text-gray-300">{currentAnalysis.thinking}</p>
@@ -604,7 +588,7 @@ class IPAnalyzer {
                               onClick={() => navigator.clipboard.writeText(currentAnalysis.analysisCode)}
                               className="text-gray-400 hover:text-white h-auto p-1"
                             >
-                              <Copy size={12} />
+                              Copy
                             </Button>
                           </div>
                           <pre className="text-xs text-gray-300 overflow-x-auto whitespace-pre-wrap">

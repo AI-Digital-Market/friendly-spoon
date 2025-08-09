@@ -1,7 +1,7 @@
-import { ComponentProps } from "react"
+import { ComponentProps, forwardRef } from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
-import { IconName } from "phosphor-react" // Importing a Phosphor icon
+// Icons removed; no external icon types needed
 
 import { cn } from "@/lib/utils"
 
@@ -26,22 +26,20 @@ const badgeVariants = cva(
   }
 )
 
-function Badge({
-  className,
-  variant,
-  asChild = false,
-  ...props
-}: ComponentProps<"span"> &
-  VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot : "span"
-
-  return (
-    <Comp
-      data-slot="badge"
-      className={cn(badgeVariants({ variant }), className)}
-      {...props}
-    />
-  )
-}
+const Badge = forwardRef<HTMLSpanElement, ComponentProps<"span"> &
+  VariantProps<typeof badgeVariants> & { asChild?: boolean }>(
+  ({ className, variant, asChild = false, ...props }, ref) => {
+    const Comp: any = asChild ? Slot : "span"
+    return (
+      <Comp
+        ref={ref}
+        data-slot="badge"
+        className={cn(badgeVariants({ variant }), className)}
+        {...props}
+      />
+    )
+  }
+)
+Badge.displayName = "Badge"
 
 export { Badge, badgeVariants }

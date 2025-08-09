@@ -1,25 +1,5 @@
+import React from 'react';
 import { motion } from 'framer-motion'
-import { 
-  ChatCircle, 
-  Eye, 
-  PaintBrush, 
-  Brain, 
-  SmileySad, 
-  Globe, 
-  Article, 
-  ChartBar,
-  Heart,
-  Phone,
-  EnvelopeSimple,
-  MapPin,
-  TelegramLogo,
-  User,
-  FileText,
-  Shield,
-  Question,
-  Lightbulb,
-  GithubLogo
-} from '@phosphor-icons/react'
 
 export function Footer() {
   const handleNavigation = (page: string) => {
@@ -32,27 +12,27 @@ export function Footer() {
   }
 
   const aiAgents = [
-    { name: 'AI Chat', subdomain: 'chat', icon: ChatCircle, description: 'Intelligent conversations', color: 'from-blue-500 to-cyan-500' },
-    { name: 'Visual AI', subdomain: 'visual', icon: Eye, description: 'Image processing', color: 'from-purple-500 to-pink-500' },
-    { name: 'Creator Tools', subdomain: 'creator', icon: PaintBrush, description: 'Content creation', color: 'from-orange-500 to-red-500' },
-    { name: 'Memory AI', subdomain: 'memory', icon: Brain, description: 'Knowledge management', color: 'from-green-500 to-emerald-500' },
-    { name: 'Mood Analyzer', subdomain: 'mood', icon: SmileySad, description: 'Emotional intelligence', color: 'from-yellow-500 to-orange-500' },
-    { name: 'IP Tools', subdomain: 'ip', icon: Globe, description: 'Network utilities', color: 'from-indigo-500 to-purple-500' },
-    { name: 'Blog', subdomain: 'blog', icon: Article, description: 'Insights & tutorials', color: 'from-teal-500 to-blue-500' },
-    { name: 'Analytics', subdomain: 'analytics', icon: ChartBar, description: 'Performance metrics', color: 'from-rose-500 to-pink-500' }
+    { name: 'AI Chat', subdomain: 'chat', description: 'Intelligent conversations', color: 'from-blue-500 to-cyan-500' },
+    { name: 'Visual AI', subdomain: 'visual', description: 'Image processing', color: 'from-purple-500 to-pink-500' },
+    { name: 'Creator Tools', subdomain: 'creator', description: 'Content creation', color: 'from-orange-500 to-red-500' },
+    { name: 'Memory AI', subdomain: 'memory', description: 'Knowledge management', color: 'from-green-500 to-emerald-500' },
+    { name: 'Mood Analyzer', subdomain: 'mood', description: 'Emotional intelligence', color: 'from-yellow-500 to-orange-500' },
+    { name: 'IP Tools', subdomain: 'ip', description: 'Network utilities', color: 'from-indigo-500 to-purple-500' },
+    { name: 'Blog', subdomain: 'blog', description: 'Insights & tutorials', color: 'from-teal-500 to-blue-500' },
+    { name: 'Analytics', subdomain: 'analytics', description: 'Performance metrics', color: 'from-rose-500 to-pink-500' }
   ]
 
   const companyLinks = [
-    { name: 'About Us', page: 'about-us', icon: User },
-    { name: 'Upcoming Modules', page: 'upcoming-modules', icon: Brain },
-    { name: 'Contact Us', page: 'contact-us', icon: Phone },
-    { name: 'Support Ticket', page: 'support-ticket', icon: Question },
-    { name: '💡 Suggestions', page: 'suggestions', icon: Lightbulb }
+    { name: 'About Us', page: 'about-us' },
+    { name: 'Upcoming Modules', page: 'upcoming-modules' },
+    { name: 'Contact Us', page: 'contact-us' },
+    { name: 'Support Ticket', page: 'support-ticket' },
+    { name: 'Suggestions', page: 'suggestions' }
   ]
 
   const legalLinks = [
-    { name: 'Privacy Policy', page: 'privacy-policy', icon: Shield },
-    { name: 'Terms & Conditions', page: 'terms-conditions', icon: FileText }
+    { name: 'Privacy Policy', page: 'privacy-policy' },
+    { name: 'Terms & Conditions', page: 'terms-conditions' }
   ]
 
   return (
@@ -108,30 +88,27 @@ export function Footer() {
               🤖 AI Digital Friend Modules
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
-              {aiAgents.map((agent, index) => {
-                const IconComponent = agent.icon
-                return (
-                  <motion.button
-                    key={agent.subdomain}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => handleAgentNavigation(agent.subdomain)}
-                    className="group relative p-4 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-border/30 hover:border-blue-500/50 transition-all duration-300"
-                  >
-                    <div className={`absolute inset-0 bg-gradient-to-r ${agent.color} opacity-0 group-hover:opacity-20 rounded-xl transition-opacity duration-300`}></div>
-                    <div className="relative z-10">
-                      <div className={`p-2 rounded-lg bg-gradient-to-r ${agent.color} w-fit mx-auto mb-2`}>
-                        <IconComponent size={20} color="white" weight="fill" />
-                      </div>
-                      <h4 className="text-xs font-semibold text-white mb-1">{agent.name}</h4>
-                      <p className="text-[10px] text-muted-foreground">{agent.description}</p>
+              {aiAgents.map((agent, index) => (
+                <motion.button
+                  key={agent.subdomain}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => handleAgentNavigation(agent.subdomain)}
+                  className="group relative p-4 rounded-xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-border/30 hover:border-blue-500/50 transition-all duration-300"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-r ${agent.color} opacity-0 group-hover:opacity-20 rounded-xl transition-opacity duration-300`}></div>
+                  <div className="relative z-10">
+                    <div className={`p-2 rounded-lg bg-gradient-to-r ${agent.color} w-fit mx-auto mb-2`}>
+                      <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-6 h-6 rounded-full" />
                     </div>
-                  </motion.button>
-                )
-              })}
+                    <h4 className="text-xs font-semibold text-white mb-1">{agent.name}</h4>
+                    <p className="text-[10px] text-muted-foreground">{agent.description}</p>
+                  </div>
+                </motion.button>
+              ))}
             </div>
           </div>
 
@@ -152,7 +129,7 @@ export function Footer() {
                     className="flex items-center gap-3 text-muted-foreground hover:text-blue-400 transition-colors group"
                   >
                     <div className="p-2 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 group-hover:from-blue-400 group-hover:to-cyan-400 transition-all">
-                      <EnvelopeSimple size={16} color="white" />
+                      <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                     </div>
                     <span className="text-sm">info@onelastai.com</span>
                   </a>
@@ -161,7 +138,7 @@ export function Footer() {
                     className="flex items-center gap-3 text-muted-foreground hover:text-green-400 transition-colors group"
                   >
                     <div className="p-2 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500 group-hover:from-green-400 group-hover:to-emerald-400 transition-all">
-                      <Phone size={16} color="white" />
+                      <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                     </div>
                     <span className="text-sm">+1 (213) 772-0156</span>
                   </a>
@@ -172,7 +149,7 @@ export function Footer() {
                     className="flex items-center gap-3 text-muted-foreground hover:text-purple-400 transition-colors group"
                   >
                     <div className="p-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 group-hover:from-purple-400 group-hover:to-pink-400 transition-all">
-                      <TelegramLogo size={16} color="white" />
+                      <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                     </div>
                     <span className="text-sm">@onelastai</span>
                   </a>
@@ -183,7 +160,7 @@ export function Footer() {
                     className="flex items-center gap-3 text-muted-foreground hover:text-orange-400 transition-colors group"
                   >
                     <div className="p-2 rounded-lg bg-gradient-to-r from-orange-500 to-red-500 group-hover:from-orange-400 group-hover:to-red-400 transition-all">
-                      <Heart size={16} color="white" />
+                      <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                     </div>
                     <span className="text-sm">LINE: @onelastai</span>
                   </a>
@@ -207,7 +184,7 @@ export function Footer() {
                       className="text-sm text-muted-foreground hover:text-white transition-colors flex items-center gap-2 group"
                     >
                       <div className={`p-1 rounded bg-gradient-to-r ${agent.color} opacity-80 group-hover:opacity-100 transition-opacity`}>
-                        <agent.icon size={12} color="white" />
+                        <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                       </div>
                       {agent.name}
                     </button>
@@ -232,7 +209,7 @@ export function Footer() {
                       className="text-sm text-muted-foreground hover:text-white transition-colors flex items-center gap-2 group"
                     >
                       <div className="p-1 rounded bg-gradient-to-r from-slate-600 to-slate-700 group-hover:from-blue-500 group-hover:to-purple-500 transition-all">
-                        <link.icon size={12} color="white" />
+                        <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                       </div>
                       {link.name}
                     </button>
@@ -257,7 +234,7 @@ export function Footer() {
                       className="text-sm text-muted-foreground hover:text-white transition-colors flex items-center gap-2 group"
                     >
                       <div className="p-1 rounded bg-gradient-to-r from-slate-600 to-slate-700 group-hover:from-red-500 group-hover:to-pink-500 transition-all">
-                        <link.icon size={12} color="white" />
+                        <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                       </div>
                       {link.name}
                     </button>
@@ -269,7 +246,7 @@ export function Footer() {
                     className="text-sm text-muted-foreground hover:text-white transition-colors flex items-center gap-2 group"
                   >
                     <div className="p-1 rounded bg-gradient-to-r from-slate-600 to-slate-700 group-hover:from-green-500 group-hover:to-emerald-500 transition-all">
-                      <EnvelopeSimple size={12} color="white" />
+                      <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                     </div>
                     Help Center
                   </a>
@@ -292,7 +269,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="group relative p-3 rounded-full bg-gradient-to-r from-blue-500/20 to-cyan-500/20 border border-blue-500/30 hover:from-blue-500 hover:to-cyan-500 transition-all duration-300"
               >
-                <TelegramLogo size={20} className="text-blue-400 group-hover:text-white transition-colors" weight="fill" />
+                <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-6 h-6 rounded-full" />
                 <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
                   Telegram
                 </span>
@@ -303,7 +280,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="group relative p-3 rounded-full bg-gradient-to-r from-green-500/20 to-emerald-500/20 border border-green-500/30 hover:from-green-500 hover:to-emerald-500 transition-all duration-300"
               >
-                <Heart size={20} className="text-green-400 group-hover:text-white transition-colors" weight="fill" />
+                <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-6 h-6 rounded-full" />
                 <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-green-400 opacity-0 group-hover:opacity-100 transition-opacity">
                   LINE
                 </span>
@@ -312,7 +289,7 @@ export function Footer() {
                 href="mailto:info@onelastai.com"
                 className="group relative p-3 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 hover:from-purple-500 hover:to-pink-500 transition-all duration-300"
               >
-                <EnvelopeSimple size={20} className="text-purple-400 group-hover:text-white transition-colors" weight="fill" />
+                <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-6 h-6 rounded-full" />
                 <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-purple-400 opacity-0 group-hover:opacity-100 transition-opacity">
                   Email
                 </span>
@@ -321,7 +298,7 @@ export function Footer() {
                 href="tel:+12137720156"
                 className="group relative p-3 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 hover:from-orange-500 hover:to-red-500 transition-all duration-300"
               >
-                <Phone size={20} className="text-orange-400 group-hover:text-white transition-colors" weight="fill" />
+                <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-6 h-6 rounded-full" />
                 <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-orange-400 opacity-0 group-hover:opacity-100 transition-opacity">
                   Phone
                 </span>
@@ -354,7 +331,7 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    <GithubLogo size={16} weight="fill" />
+                    <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                   </a>
                   <a 
                     href="mailto:info@mycheckmate.dev"
@@ -388,14 +365,10 @@ export function Footer() {
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-blue-400 transition-colors"
                   >
-                    <GithubLogo size={16} weight="fill" />
+                    <img src="https://avatars.githubusercontent.com/u/223208802?s=400&u=5249ef08c9d130551422585dd7d29c8330579c1a&v=4" alt="logo" className="w-4 h-4 rounded-full" />
                   </a>
                 </div>
-                <img 
-                  src="https://avatars.githubusercontent.com/u/159474286?v=4" 
-                  alt="Developer" 
-                  className="w-8 h-8 rounded-full ring-2 ring-purple-500/50"
-                />
+                {/* Developer image removed as per icon removal policy */}
               </div>
             </div>
 

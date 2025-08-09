@@ -2,22 +2,7 @@ import { motion } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { 
-  Heart, 
-  Brain, 
-  ChartLine, 
-  Camera, 
-  ChatCircle, 
-  Users, 
-  Boat, 
-  Sparkle, 
-  ChartBar,
-  NetworkX,
-  PenNib,
-  FileText,
-  Eye,
-  Memory
-} from '@phosphor-icons/react'
+// Icons removed per requirement
 
 const modules = [
   {
@@ -26,7 +11,7 @@ const modules = [
     description: 'Advanced conversational AI companion for natural conversations and assistance.',
     subdomain: 'chat.onelastai.com',
     features: ['Natural Language', 'Context Awareness', 'Multi-Modal'],
-    icon: MessageCircle,
+  // icon removed
     status: 'Available',
     color: 'from-blue-500 to-cyan-500'
   },
@@ -36,7 +21,7 @@ const modules = [
     description: 'AI-powered mood detection and emotional intelligence analysis.',
     subdomain: 'mood.onelastai.com',
     features: ['Emotion Recognition', 'Sentiment Analysis', 'Wellness Insights'],
-    icon: Heart,
+  // icon removed
     status: 'Available',
     color: 'from-pink-500 to-rose-500'
   },
@@ -46,7 +31,7 @@ const modules = [
     description: 'Computer vision and image processing capabilities for visual content creation.',
     subdomain: 'visual.onelastai.com',
     features: ['Image Generation', 'Object Detection', 'Style Transfer'],
-    icon: Eye,
+  // icon removed
     status: 'Available',
     color: 'from-purple-500 to-violet-500'
   },
@@ -56,7 +41,7 @@ const modules = [
     description: 'Comprehensive suite of AI-powered tools for content creators and artists.',
     subdomain: 'creator.onelastai.com',
     features: ['Content Generation', 'Design Tools', 'Creative AI'],
-    icon: PenTool,
+  // icon removed
     status: 'Available',
     color: 'from-orange-500 to-red-500'
   },
@@ -66,7 +51,7 @@ const modules = [
     description: 'Intelligent note-taking and memory management with AI-powered organization.',
     subdomain: 'memory.onelastai.com',
     features: ['Smart Notes', 'Knowledge Graph', 'Memory Recall'],
-    icon: Memory,
+  // icon removed
     status: 'Available',
     color: 'from-green-500 to-emerald-500'
   },
@@ -76,7 +61,7 @@ const modules = [
     description: 'Network utilities and IP address tools for developers and network administrators.',
     subdomain: 'ip.onelastai.com',
     features: ['IP Lookup', 'Network Analysis', 'Security Tools'],
-    icon: NetworkX,
+  // icon removed
     status: 'Available',
     color: 'from-cyan-500 to-blue-500'
   },
@@ -86,7 +71,7 @@ const modules = [
     description: 'Latest insights, tutorials, and updates from the One Last AI community.',
     subdomain: 'blog.onelastai.com',
     features: ['AI News', 'Tutorials', 'Community Posts'],
-    icon: FileText,
+  // icon removed
     status: 'Available',
     color: 'from-gray-500 to-slate-500'
   },
@@ -96,7 +81,7 @@ const modules = [
     description: 'Comprehensive analytics and monitoring for API usage and platform metrics.',
     subdomain: 'analytics.onelastai.com',
     features: ['Usage Metrics', 'Performance Monitoring', 'Real-time Data'],
-    icon: ChartBar,
+  // icon removed
     status: 'Available',
     color: 'from-indigo-500 to-purple-500'
   }
@@ -148,7 +133,7 @@ export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
         {/* Modules Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {modules.map((module, index) => {
-            const IconComponent = module.icon
+            // icons removed
             return (
               <motion.div
                 key={module.id}
@@ -160,9 +145,7 @@ export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
                 <Card className="h-full bg-card/50 backdrop-blur-sm border-border/50 hover:border-accent/50 transition-all duration-300 glow-effect group cursor-pointer">
                   <CardHeader className="pb-4">
                     <div className="flex items-center justify-between mb-3">
-                      <div className={`p-2.5 rounded-lg bg-gradient-to-r ${module.color}`}>
-                        <IconComponent size={20} className="text-white" />
-                      </div>
+                      <div className={`p-2.5 rounded-lg bg-gradient-to-r ${module.color}`}></div>
                       <Badge className={getStatusColor(module.status)}>
                         {module.status}
                       </Badge>
@@ -198,15 +181,9 @@ export function ModulesSection({ onModuleSelect }: ModulesSectionProps) {
                         onClick={() => handleModuleClick(module)}
                       >
                         {module.status === 'Available' ? (
-                          <>
-                            <Sparkles size={14} className="mr-2" />
-                            Launch Module
-                          </>
+                          'Launch Module'
                         ) : module.status === 'Beta' ? (
-                          <>
-                            <Sparkles size={14} className="mr-2" />
-                            Join Beta
-                          </>
+                          'Join Beta'
                         ) : module.status === 'Development' ? (
                           'In Development'
                         ) : (

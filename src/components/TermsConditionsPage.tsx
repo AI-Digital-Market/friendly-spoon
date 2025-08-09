@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { FileText, Scales, WaveTriangle, CheckCircle } from '@phosphor-icons/react'
+// Removed icon imports
 
 interface TermsConditionsPageProps {
   onBack?: () => void
@@ -19,7 +19,7 @@ export function TermsConditionsPage({ onBack }: TermsConditionsPageProps) {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="p-3 rounded-xl bg-gradient-to-r from-orange-500 to-red-500">
-              <Scale size={28} color="white" weight="fill" />
+              {/* Removed Scale icon */}
             </div>
             <h1 className="text-3xl md:text-4xl font-bold gradient-text">Terms & Conditions</h1>
           </div>
@@ -37,7 +37,7 @@ export function TermsConditionsPage({ onBack }: TermsConditionsPageProps) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle size={20} />
+                {/* Removed CheckCircle icon */}
                 1. Introduction
               </CardTitle>
             </CardHeader>
@@ -52,7 +52,7 @@ export function TermsConditionsPage({ onBack }: TermsConditionsPageProps) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <FileText size={20} />
+                {/* Removed FileText icon */}
                 2. Eligibility
               </CardTitle>
             </CardHeader>
@@ -155,7 +155,7 @@ export function TermsConditionsPage({ onBack }: TermsConditionsPageProps) {
             </CardContent>
           </Card>
 
-          {/* 6. Limitation of Liability */}
+                    {/* Removed AlertTriangle icon */}
           <Card>
             <CardHeader>
               <CardTitle>6. Limitation of Liability</CardTitle>
@@ -163,7 +163,6 @@ export function TermsConditionsPage({ onBack }: TermsConditionsPageProps) {
             <CardContent className="space-y-4">
               <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle size={20} className="text-yellow-500 mt-0.5" />
                   <div className="space-y-2">
                     <h4 className="font-semibold text-yellow-500">Important Disclaimer</h4>
                     <p className="text-muted-foreground">

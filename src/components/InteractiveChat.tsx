@@ -1,10 +1,10 @@
+import React from 'react'
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { ChatCircle, Microphone, PaperPlaneTilt, Sparkle as SparkleIcon, User, Robot } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
 interface ChatMessage {
@@ -98,7 +98,6 @@ export function InteractiveChat() {
           <Card className="bg-card/50 backdrop-blur-sm border-border/50 glow-effect">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <MessageCircle size={24} className="text-accent" />
                 Live AI Chat
               </CardTitle>
               <CardDescription>
@@ -122,11 +121,6 @@ export function InteractiveChat() {
                           <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                             chat.sender === 'user' ? 'bg-primary/20' : 'bg-accent/20'
                           }`}>
-                            {chat.sender === 'user' ? (
-                              <User size={16} className="text-primary" />
-                            ) : (
-                              <Robot size={16} className="text-accent" />
-                            )}
                           </div>
                           <div className={`rounded-lg p-3 ${
                             chat.sender === 'user' 
@@ -150,11 +144,9 @@ export function InteractiveChat() {
                     >
                       <div className="flex gap-2">
                         <div className="w-8 h-8 rounded-full flex items-center justify-center bg-accent/20">
-                          <Robot size={16} className="text-accent" />
                         </div>
                         <div className="bg-card/50 rounded-lg p-3">
                           <div className="flex items-center gap-2">
-                            <SparkleIcon size={16} className="text-accent animate-spin" />
                             <span className="text-sm text-muted-foreground">AI is thinking...</span>
                           </div>
                         </div>
@@ -167,7 +159,6 @@ export function InteractiveChat() {
               {/* Chat Input */}
               <div className="space-y-3">
                 <div className="flex items-center gap-2 mb-2">
-                  <ChatCircle size={16} className="text-primary" />
                   <span className="font-medium">Chat with AI</span>
                   <Badge className="bg-green-500/20 text-green-400 border-green-500/30">
                     Live
@@ -185,17 +176,7 @@ export function InteractiveChat() {
                   disabled={isProcessing || !message.trim()}
                   className="w-full bg-primary hover:bg-primary/90"
                 >
-                  {isProcessing ? (
-                    <>
-                      <SparkleIcon size={16} className="mr-2 animate-spin" />
-                      AI is responding...
-                    </>
-                  ) : (
-                    <>
-                      <PaperPlaneTilt size={16} className="mr-2" />
-                      Send Message
-                    </>
-                  )}
+                  {isProcessing ? 'AI is responding...' : 'Send Message'}
                 </Button>
               </div>
 

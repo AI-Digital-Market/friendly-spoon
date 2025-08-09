@@ -3,12 +3,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { 
-  PaintBrush, FileText, Sparkle, PaperPlaneTilt, Microphone, MicrophoneSlash, 
-  Code, Brain, Lightning, Heart, Star, Play, Copy, 
-  SpeakerHigh, SpeakerSlash, Palette, BookOpen, MagicWand,
-  Lightbulb, MaskHappy, Coffee
-} from '@phosphor-icons/react'
 import { useState, useRef, useEffect } from 'react'
 
 interface CreativeMessage {
@@ -76,211 +70,68 @@ export function CreatorToolsPage({ onBack }: CreatorToolsPageProps) {
 
   // Creative Content Generator with Story Logic
   const generateCreativeResponse = (userInput: string): { content: string; codeExample: string; thinking: string; category: string } => {
-    const input = userInput.toLowerCase()
-    
+  const input = userInput.toLowerCase()
     // Creative content patterns
     const creativePatterns = {
       story: {
         triggers: ['story', 'tale', 'adventure', 'fiction', 'novel', 'write a story', 'create a story'],
-        response: 'I\'d love to help you craft an amazing story! Let me weave together characters, plot, and magic to create something truly special. What genre or theme interests you most?',
-        code: `// MUSE's Story Generation Engine
-class StoryWeaver {
-  createStory(prompt, genre = 'adventure') {
-    const elements = this.analyzePrompt(prompt)
-    const structure = this.buildNarrative(elements)
-    
-    return {
-      plot: this.generatePlotOutline(structure),
-      characters: this.createCharacters(elements.themes),
-      setting: this.craftWorldbuilding(genre),
-      conflict: this.designConflict(structure.tension),
-      resolution: this.weaveEnding(structure.arc)
-    }
-  }
-  
-  addCreativeFlair(story) {
-    return this.enhanceWithMetaphors(
-      this.addEmotionalDepth(
-        this.polishDialogue(story)
-      )
-    )
-  }
-}`,
+        content: 'I\'d love to help you craft an amazing story! Let me weave together characters, plot, and magic to create something truly special. What genre or theme interests you most?',
+        codeExample: `// MUSE's Story Generation Engine\nclass StoryWeaver {\n  createStory(prompt, genre = 'adventure') {\n    const elements = this.analyzePrompt(prompt)\n    const structure = this.buildNarrative(elements)\n    \n    return {\n      plot: this.generatePlotOutline(structure),\n      characters: this.createCharacters(elements.themes),\n      setting: this.craftWorldbuilding(genre),\n      conflict: this.designConflict(structure.tension),\n      resolution: this.weaveEnding(structure.arc)\n    }\n  }\n  \n  addCreativeFlair(story) {\n    return this.enhanceWithMetaphors(\n      this.addEmotionalDepth(\n        this.polishDialogue(story)\n      )\n    )\n  }\n}`,
         thinking: 'Analyzing narrative structure, gathering creative inspiration, preparing storytelling framework...',
-        category: 'story'
+  category: 'story',
       },
       joke: {
         triggers: ['joke', 'funny', 'humor', 'laugh', 'comedy', 'make me laugh', 'tell a joke'],
-        response: 'Time for some laughter! 😄 I\'ll craft a joke that\'ll tickle your funny bone. What type of humor do you enjoy - puns, observational comedy, or something silly?',
-        code: `// MUSE's Comedy Workshop
-class HumorGenerator {
-  craftJoke(style = 'witty', topic = 'general') {
-    const comedyElements = this.analyzeHumorStyle(style)
-    const timing = this.calculatePunchlineTiming()
-    
-    return {
-      setup: this.buildSetup(topic, comedyElements),
-      punchline: this.createPunchline(timing),
-      delivery: this.optimizeDelivery(style),
-      alternativeEndings: this.generateVariations()
-    }
-  }
-  
-  testHumor(joke) {
-    return {
-      funniness: this.rateFunniness(joke),
-      appropriateness: this.checkAppropriate(joke),
-      originality: this.assessOriginality(joke)
-    }
-  }
-}`,
+        content: 'Time for some laughter! 😄 I\'ll craft a joke that\'ll tickle your funny bone. What type of humor do you enjoy - puns, observational comedy, or something silly?',
+        codeExample: `// MUSE's Comedy Workshop\nclass HumorGenerator {\n  craftJoke(style = 'witty', topic = 'general') {\n    const comedyElements = this.analyzeHumorStyle(style)\n    const timing = this.calculatePunchlineTiming()\n    \n    return {\n      setup: this.buildSetup(topic, comedyElements),\n      punchline: this.createPunchline(timing),\n      delivery: this.optimizeDelivery(style),\n      alternativeEndings: this.generateVariations()\n    }\n  }\n  \n  testHumor(joke) {\n    return {\n      funniness: this.rateFunniness(joke),\n      appropriateness: this.checkAppropriate(joke),\n      originality: this.assessOriginality(joke)\n    }\n  }\n}`,
         thinking: 'Activating humor algorithms, analyzing comedic timing, preparing punchline delivery...',
-        category: 'humor'
+  category: 'humor',
       },
       post: {
         triggers: ['post', 'social media', 'instagram', 'facebook', 'twitter', 'caption', 'hashtag'],
-        response: 'Let\'s create some engaging social media content! I can help with captivating captions, trending hashtags, and posts that get people talking. What platform and topic?',
-        code: `// MUSE's Social Media Magic
-class ContentCreator {
-  generatePost(platform, topic, tone = 'engaging') {
-    const audience = this.analyzeAudience(platform)
-    const trends = this.getCurrentTrends(platform)
-    
-    return {
-      caption: this.writeCaptivatingCaption(topic, tone),
-      hashtags: this.generateHashtags(topic, trends),
-      timing: this.suggestOptimalPostTime(audience),
-      engagement: this.addEngagementHooks(),
-      visuals: this.suggestVisualElements(topic)
-    }
-  }
-  
-  optimizeForReach(post) {
-    return this.addTrendingElements(
-      this.enhanceEngagement(post)
-    )
-  }
-}`,
+        content: 'Let\'s create some engaging social media content! I can help with captivating captions, trending hashtags, and posts that get people talking. What platform and topic?',
+        codeExample: `// MUSE's Social Media Magic\nclass ContentCreator {\n  generatePost(platform, topic, tone = 'engaging') {\n    const audience = this.analyzeAudience(platform)\n    const trends = this.getCurrentTrends(platform)\n    \n    return {\n      caption: this.writeCaptivatingCaption(topic, tone),\n      hashtags: this.generateHashtags(topic, trends),\n      timing: this.suggestOptimalPostTime(audience),\n      engagement: this.addEngagementHooks(),\n      visuals: this.suggestVisualElements(topic)\n    }\n  }\n  \n  optimizeForReach(post) {\n    return this.addTrendingElements(\n      this.enhanceEngagement(post)\n    )\n  }\n}`,
         thinking: 'Analyzing social media trends, optimizing engagement strategies, crafting viral content...',
-        category: 'social'
+  category: 'social',
       },
       poem: {
         triggers: ['poem', 'poetry', 'verse', 'rhyme', 'haiku', 'sonnet', 'write a poem'],
-        response: 'Poetry is the language of the soul! 🌟 Let me compose verses that dance with rhythm and meaning. What emotions or themes would you like to explore?',
-        code: `// MUSE's Poetry Forge
-class VerseSmith {
-  composePoem(theme, style = 'free_verse') {
-    const emotions = this.extractEmotions(theme)
-    const imagery = this.gatherImagery(theme)
-    
-    return {
-      structure: this.designStructure(style),
-      rhymeScheme: this.createRhymePattern(style),
-      meter: this.establishRhythm(style),
-      metaphors: this.craftMetaphors(imagery),
-      finale: this.buildEmotionalClimax(emotions)
-    }
-  }
-  
-  polishVerse(poem) {
-    return this.refineRhythm(
-      this.enhanceImagery(
-        this.perfectFlow(poem)
-      )
-    )
-  }
-}`,
+        content: 'Poetry is the language of the soul! 🌟 Let me compose verses that dance with rhythm and meaning. What emotions or themes would you like to explore?',
+        codeExample: `// MUSE's Poetry Forge\nclass VerseSmith {\n  composePoem(theme, style = 'free_verse') {\n    const emotions = this.extractEmotions(theme)\n    const imagery = this.gatherImagery(theme)\n    \n    return {\n      structure: this.designStructure(style),\n      rhymeScheme: this.createRhymePattern(style),\n      meter: this.establishRhythm(style),\n      metaphors: this.craftMetaphors(imagery),\n      finale: this.buildEmotionalClimax(emotions)\n    }\n  }\n  \n  polishVerse(poem) {\n    return this.refineRhythm(\n      this.enhanceImagery(\n        this.perfectFlow(poem)\n      )\n    )\n  }\n}`,
         thinking: 'Channeling poetic inspiration, structuring verse patterns, weaving emotional imagery...',
-        category: 'poetry'
+  category: 'poetry',
       },
       script: {
         triggers: ['script', 'dialogue', 'screenplay', 'play', 'drama', 'scene', 'theater'],
-        response: 'Lights, camera, action! 🎬 I\'ll help you write compelling scripts with dynamic dialogue and engaging scenes. What story do you want to bring to life?',
-        code: `// MUSE's Script Studio
-class ScriptWriter {
-  writeScript(premise, format = 'short_film') {
-    const acts = this.structureActs(premise)
-    const characters = this.developCharacters(premise)
-    
-    return {
-      logline: this.craftLogline(premise),
-      treatment: this.writeTreatment(acts),
-      scenes: this.buildScenes(acts, characters),
-      dialogue: this.craftDialogue(characters),
-      action: this.writeActionLines(acts)
-    }
-  }
-  
-  refineScript(script) {
-    return this.improveDialogue(
-      this.enhancePacing(
-        this.strengthenConflict(script)
-      )
-    )
-  }
-}`,
+        content: 'Lights, camera, action! 🎬 I\'ll help you write compelling scripts with dynamic dialogue and engaging scenes. What story do you want to bring to life?',
+        codeExample: `// MUSE's Script Studio\nclass ScriptWriter {\n  writeScript(premise, format = 'short_film') {\n    const acts = this.structureActs(premise)\n    const characters = this.developCharacters(premise)\n    \n    return {\n      logline: this.craftLogline(premise),\n      treatment: this.writeTreatment(acts),\n      scenes: this.buildScenes(acts, characters),\n      dialogue: this.craftDialogue(characters),\n      action: this.writeActionLines(acts)\n    }\n  }\n  \n  refineScript(script) {\n    return this.improveDialogue(\n      this.enhancePacing(\n        this.strengthenConflict(script)\n      )\n    )\n  }\n}`,
         thinking: 'Structuring dramatic arcs, developing character voices, crafting compelling dialogue...',
-        category: 'script'
+  category: 'script',
       },
       creative: {
         triggers: ['creative', 'idea', 'inspiration', 'brainstorm', 'imagine', 'invent', 'design'],
-        response: 'Time to unleash creativity! 🎨 I\'m bubbling with ideas and ready to help you brainstorm, innovate, and create something extraordinary. What\'s sparking your imagination?',
-        code: `// MUSE's Inspiration Engine
-class CreativitySpark {
-  generateIdeas(prompt, quantity = 10) {
-    const associations = this.freeAssociate(prompt)
-    const combinations = this.crossPollinate(associations)
-    
-    return combinations.map(concept => ({
-      idea: concept,
-      uniqueness: this.rateOriginality(concept),
-      feasibility: this.assessPracticality(concept),
-      impact: this.measurePotential(concept),
-      development: this.suggestNextSteps(concept)
-    })).sort((a, b) => b.uniqueness - a.uniqueness)
-  }
-  
-  expandIdea(seed) {
-    return this.addDimensions(
-      this.exploreAngles(
-        this.deepenConcept(seed)
-      )
-    )
-  }
-}`,
+        content: 'Time to unleash creativity! 🎨 I\'m bubbling with ideas and ready to help you brainstorm, innovate, and create something extraordinary. What\'s sparking your imagination?',
+        codeExample: `// MUSE's Inspiration Engine\nclass CreativitySpark {\n  generateIdeas(prompt, quantity = 10) {\n    const associations = this.freeAssociate(prompt)\n    const combinations = this.crossPollinate(associations)\n    \n    return combinations.map(concept => ({\n      idea: concept,\n      uniqueness: this.rateOriginality(concept),\n      feasibility: this.assessPracticality(concept),\n      impact: this.measurePotential(concept),\n      development: this.suggestNextSteps(concept)\n    })).sort((a, b) => b.uniqueness - a.uniqueness)\n  }\n  \n  expandIdea(seed) {\n    return this.addDimensions(\n      this.exploreAngles(\n        this.deepenConcept(seed)\n      )\n    )\n  }\n}`,
         thinking: 'Igniting creative sparks, connecting unusual concepts, generating innovative possibilities...',
-        category: 'creative'
+  category: 'creative',
       },
       default: {
         triggers: [],
-        response: 'What a fascinating creative challenge! ✨ Let me tap into my magical creative powers and help you bring this vision to life. Tell me more about what you\'re imagining!',
-        code: `// MUSE's Universal Creator
-async function createMagic(userInput) {
-  const intent = await detectCreativeIntent(userInput)
-  const inspiration = gatherCreativeSeeds(userInput)
-  const magic = await weaveMagic(intent, inspiration)
-  
-  return {
-    creation: magic,
-    style: determineTone(userInput),
-    enhancement: addCreativeFlair(magic),
-    suggestions: generateFollowUps(intent),
-    sparkle: addMagicalTouch(magic)
-  }
-}`,
+        content: 'What a fascinating creative challenge! ✨ Let me tap into my magical creative powers and help you bring this vision to life. Tell me more about what you\'re imagining!',
+        codeExample: `// MUSE's Universal Creator\nasync function createMagic(userInput) {\n  const intent = await detectCreativeIntent(userInput)\n  const inspiration = gatherCreativeSeeds(userInput)\n  const magic = await weaveMagic(intent, inspiration)\n  \n  return {\n    creation: magic,\n    style: determineTone(userInput),\n    enhancement: addCreativeFlair(magic),\n    suggestions: generateFollowUps(intent),\n    sparkle: addMagicalTouch(magic)\n  }\n}`,
         thinking: 'Analyzing creative essence, channeling artistic energy, preparing magical content creation...',
-        category: 'general'
+  category: 'general'
       }
     }
 
     // Find matching creative pattern
     for (const [key, pattern] of Object.entries(creativePatterns)) {
       if (pattern.triggers.some(trigger => input.includes(trigger))) {
-        return pattern
+        return pattern as { content: string; codeExample: string; thinking: string; category: string }
       }
     }
     
-    return creativePatterns.default
+  return creativePatterns.default as { content: string; codeExample: string; thinking: string; category: string }
   }
 
   const sendMessage = async () => {
@@ -301,7 +152,6 @@ async function createMagic(userInput) {
     // Simulate AI thinking delay
     setTimeout(() => {
       const creativeResponse = generateCreativeResponse(inputMessage)
-      
       const assistantMessage: CreativeMessage = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -309,10 +159,9 @@ async function createMagic(userInput) {
         timestamp: new Date(),
         type: 'text',
         category: creativeResponse.category,
-        codeExample: creativeResponse.code,
+        codeExample: creativeResponse.codeExample,
         thinking: creativeResponse.thinking
       }
-      
       setMessages(prev => [...prev, assistantMessage])
       setIsThinking(false)
     }, 2500)
@@ -383,7 +232,7 @@ async function createMagic(userInput) {
                   transition={{ duration: 2, repeat: Infinity }}
                   className="absolute -top-2 -right-2"
                 >
-                  <Sparkles size={16} className="text-yellow-400" weight="fill" />
+                  {/* No icon rendering */}
                 </motion.div>
               </motion.div>
               <div>
@@ -407,19 +256,19 @@ async function createMagic(userInput) {
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Badge variant="secondary" className="bg-pink-500/20 text-pink-300 border-pink-500/30">
-                  <BookOpen className="w-4 h-4 mr-1" />
+                  {/* No icon rendering */}
                   Story Writing
                 </Badge>
                 <Badge variant="secondary" className="bg-orange-500/20 text-orange-300 border-orange-500/30">
-                  <Mask className="w-4 h-4 mr-1" />
+                  {/* No icon rendering */}
                   Comedy & Humor
                 </Badge>
                 <Badge variant="secondary" className="bg-purple-500/20 text-purple-300 border-purple-500/30">
-                  <Palette className="w-4 h-4 mr-1" />
+                  {/* No icon rendering */}
                   Creative Posts
                 </Badge>
                 <Badge variant="secondary" className="bg-yellow-500/20 text-yellow-300 border-yellow-500/30">
-                  <MagicWand className="w-4 h-4 mr-1" />
+                  {/* No icon rendering */}
                   Magical Ideas
                 </Badge>
               </div>
@@ -440,7 +289,7 @@ async function createMagic(userInput) {
                   <div className="flex items-center justify-between">
                     <div>
                       <CardTitle className="flex items-center gap-2 text-white">
-                        <PaintBrush size={20} className="text-pink-400" />
+                        {/* No icon rendering */}
                         Create with MUSE
                       </CardTitle>
                       <CardDescription className="text-gray-400">
@@ -454,7 +303,7 @@ async function createMagic(userInput) {
                         onClick={() => setShowCode(!showCode)}
                         className="border-slate-600 text-gray-300"
                       >
-                        <Code size={16} className="mr-1" />
+                        {/* No icon rendering */}
                         {showCode ? 'Hide' : 'Show'} Magic
                       </Button>
                     </div>
@@ -494,7 +343,7 @@ async function createMagic(userInput) {
                                     onClick={() => speakMessage(message.content)}
                                     className="h-6 px-2 text-xs text-gray-400 hover:text-white"
                                   >
-                                    <SpeakerHigh size={12} className="mr-1" />
+                                    {/* No icon rendering */}
                                     Read
                                   </Button>
                                   {isSpeaking && (
@@ -504,7 +353,7 @@ async function createMagic(userInput) {
                                       onClick={stopSpeaking}
                                       className="h-6 px-2 text-xs text-gray-400 hover:text-white"
                                     >
-                                      <SpeakerSlash size={12} className="mr-1" />
+                                      {/* No icon rendering */}
                                       Stop
                                     </Button>
                                   )}
@@ -521,7 +370,7 @@ async function createMagic(userInput) {
                               >
                                 <div className="bg-slate-900/50 border border-slate-600 rounded-lg p-3">
                                   <div className="flex items-center gap-2 mb-2">
-                                    <MagicWand size={14} className="text-pink-400" />
+                                    {/* No icon rendering */}
                                     <span className="text-xs text-pink-400 font-medium">Creative Process</span>
                                   </div>
                                   <p className="text-xs text-gray-400 italic">{message.thinking}</p>
@@ -589,7 +438,7 @@ async function createMagic(userInput) {
                         }`}
                         disabled={isThinking}
                       >
-                        {isListening ? <MicrophoneSlash size={20} /> : <Microphone size={20} />}
+                        {/* No icon rendering */}
                       </Button>
                       
                       {/* Send Button */}
@@ -598,7 +447,7 @@ async function createMagic(userInput) {
                         disabled={!inputMessage.trim() || isThinking}
                         className="px-6 bg-gradient-to-r from-pink-500 to-orange-500 hover:from-pink-600 hover:to-orange-600 text-white border-0"
                       >
-                        <Send size={20} />
+                        {/* No icon rendering */}
                       </Button>
                     </div>
                     
@@ -625,7 +474,6 @@ async function createMagic(userInput) {
                 <Card className="h-[700px] bg-slate-800/50 border-slate-700 backdrop-blur-sm">
                   <CardHeader className="border-b border-slate-700">
                     <CardTitle className="flex items-center gap-2 text-white">
-                      <MagicWand size={20} className="text-pink-400" />
                       Creative Magic
                     </CardTitle>
                     <CardDescription className="text-gray-400">
@@ -656,7 +504,6 @@ async function createMagic(userInput) {
                                   onClick={() => copyCode(messages[messages.length - 1].codeExample || '')}
                                   className="h-6 px-2 text-xs text-gray-400 hover:text-white"
                                 >
-                                  <Copy size={12} className="mr-1" />
                                   Copy
                                 </Button>
                               </div>

@@ -3,23 +3,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { useState, useEffect } from 'react'
-import { 
-  Robot, 
-  Heart, 
-  Eye, 
-  Brain, 
-  Palette, 
-  ArrowDown, 
-  Code, 
-  Play, 
-  Star,
-  Crown,
-  Lock,
-  CheckCircle,
-  X,
-  BookOpen,
-  ChatCircle
-} from '@phosphor-icons/react'
+// Icons removed per requirement
 
 interface HomePageProps {
   onNavigate?: (page: string) => void
@@ -39,7 +23,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       id: 'chat',
       title: 'AI Chat',
       description: 'Intelligent conversational AI that understands context and provides meaningful responses for any topic.',
-      icon: ChatCircle,
+  // icon removed
       color: 'from-blue-500 to-cyan-500',
       requests: 3,
       isActive: true
@@ -48,7 +32,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       id: 'mood',
       title: 'Mood Analyzer',
       description: 'Advanced emotional intelligence AI that analyzes your mood and provides personalized insights.',
-      icon: Heart,
+  // icon removed
       color: 'from-pink-500 to-rose-500',
       requests: 3,
       isActive: true
@@ -57,7 +41,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       id: 'cinematic',
       title: 'CINEMATIC',
       description: 'AI storytelling & video generation with voice input, multilingual support, and scene understanding.',
-      icon: Eye,
+  // icon removed
       color: 'from-purple-500 to-violet-500',
       requests: 3,
       isActive: true
@@ -66,7 +50,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       id: 'creative',
       title: 'Creative Studio',
       description: 'AI-powered content creation for writing, design, and artistic expression with unlimited creativity.',
-      icon: Palette,
+  // icon removed
       color: 'from-orange-500 to-red-500',
       requests: 3,
       isActive: true
@@ -75,7 +59,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       id: 'mood',
       title: 'Mood Analyzer',
       description: 'Advanced emotional intelligence AI that analyzes your mood and provides personalized insights.',
-      icon: Heart,
+  // icon removed
       color: 'from-pink-500 to-rose-500',
       requests: 3,
       isActive: true
@@ -84,7 +68,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       id: 'memory',
       title: 'MEMORY',
       description: 'Your personal AI brain that remembers everything - passwords, contacts, notes. Perfect recall with just keywords!',
-      icon: Brain,
+  // icon removed
       color: 'from-purple-500 to-violet-500',
       requests: 3,
       isActive: true
@@ -93,7 +77,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
       id: 'companion',
       title: 'AI Companion',
       description: 'Personal AI assistant that learns your preferences and adapts to your lifestyle needs.',
-      icon: Robot,
+  // icon removed
       color: 'from-indigo-500 to-blue-500',
       requests: 3,
       isActive: true
@@ -299,7 +283,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                 transition={{ delay: 0.2, duration: 0.8 }}
                 className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-2xl"
               >
-                <Robot size={32} color="white" weight="fill" />
+                <span className="text-white font-bold">AI</span>
               </motion.div>
               <h1 className="text-4xl md:text-6xl font-bold gradient-text">
                 AI Digital Friend
@@ -332,12 +316,11 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
               transition={{ delay: 1, duration: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12"
             >
-              <Button 
+              <Button
                 size="lg" 
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 text-white px-8 py-3"
                 onClick={() => document.getElementById('modules')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Play size={20} className="mr-2" />
                 Try Free Modules
               </Button>
               <Button 
@@ -346,7 +329,6 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                 className="border-border hover:bg-accent px-8 py-3"
                 onClick={() => setShowSubscriptionModal(true)}
               >
-                <Crown size={20} className="mr-2" />
                 Get Premium Access
               </Button>
               <Button 
@@ -355,7 +337,6 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                 className="border-green-500/50 hover:bg-green-500/10 text-green-400 px-6 py-3"
                 onClick={() => onNavigate?.('testpassage')}
               >
-                <Lock size={20} className="mr-2" />
                 Test Auth
               </Button>
             </motion.div>
@@ -366,7 +347,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
               transition={{ delay: 1.2, duration: 0.8 }}
               className="flex justify-center"
             >
-              <ArrowDown size={24} className="text-muted-foreground animate-bounce" />
+              <span className="text-muted-foreground animate-bounce">↓</span>
             </motion.div>
           </motion.div>
         </div>
@@ -392,7 +373,6 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
           {/* Module Cards Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {modules.map((module, index) => {
-              const IconComponent = module.icon
               return (
                 <motion.div
                   key={module.id}
@@ -409,9 +389,7 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                     
                     <CardHeader className="pb-4 relative">
                       <div className="flex items-center justify-between mb-4">
-                        <div className={`p-3 rounded-xl bg-gradient-to-r ${module.color} shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
-                          <IconComponent size={24} className="text-white" />
-                        </div>
+                        <div className={`p-3 rounded-xl bg-gradient-to-r ${module.color} shadow-lg group-hover:shadow-xl transition-shadow duration-300 text-white font-bold`}>AI</div>
                         <Badge variant="outline" className="bg-green-500/20 text-green-400 border-green-500/30">
                           {module.requests} free requests
                         </Badge>
@@ -425,10 +403,9 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                     </CardHeader>
                     
                     <CardContent className="pt-0 relative">
-                      <Button 
+                      <Button
                         className={`w-full bg-gradient-to-r ${module.color} hover:opacity-90 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300`}
                       >
-                        <Play size={16} className="mr-2" />
                         Try Now
                       </Button>
                     </CardContent>
@@ -495,41 +472,22 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
             >
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Code size={20} />
-                    API Features
-                  </CardTitle>
+                  <CardTitle className="flex items-center gap-2">API Features</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <CheckCircle size={16} className="text-green-500" />
-                    <span>RESTful API with JSON responses</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle size={16} className="text-green-500" />
-                    <span>Authentication with API keys</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle size={16} className="text-green-500" />
-                    <span>Real-time processing capabilities</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle size={16} className="text-green-500" />
-                    <span>Comprehensive documentation</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <CheckCircle size={16} className="text-green-500" />
-                    <span>Rate limiting and usage analytics</span>
-                  </div>
+                  <div className="flex items-center gap-3"><span className="text-green-500">✓</span><span>RESTful API with JSON responses</span></div>
+                  <div className="flex items-center gap-3"><span className="text-green-500">✓</span><span>Authentication with API keys</span></div>
+                  <div className="flex items-center gap-3"><span className="text-green-500">✓</span><span>Real-time processing capabilities</span></div>
+                  <div className="flex items-center gap-3"><span className="text-green-500">✓</span><span>Comprehensive documentation</span></div>
+                  <div className="flex items-center gap-3"><span className="text-green-500">✓</span><span>Rate limiting and usage analytics</span></div>
                 </CardContent>
               </Card>
 
-              <Button 
+              <Button
                 onClick={handleApiContact}
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 text-white"
                 size="lg"
               >
-          <ChatCircle size={20} className="mr-2" />
                 Contact for API Access
               </Button>
             </motion.div>
@@ -554,12 +512,11 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button 
+              <Button
                 size="lg"
                 onClick={() => setShowSubscriptionModal(true)}
                 className="bg-gradient-to-r from-blue-500 to-purple-600 hover:opacity-90 text-white px-8 py-3"
               >
-                <Crown size={20} className="mr-2" />
                 Subscribe Now
               </Button>
               <Button 
@@ -568,7 +525,6 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                 onClick={() => onNavigate?.('contact')}
                 className="border-border hover:bg-accent px-8 py-3"
               >
-          <ChatCircle size={20} className="mr-2" />
                 Contact Us
               </Button>
             </div>
@@ -591,23 +547,14 @@ export function HomePage({ onNavigate, onNavigateAuth, onNavigateSubscription, o
                 size="sm"
                 onClick={() => setShowSubscriptionModal(false)}
               >
-                <X size={16} />
+                ×
               </Button>
             </div>
             
             <div className="space-y-4 mb-6">
-              <div className="flex items-center gap-3">
-                <Lock size={16} className="text-yellow-500" />
-                <span>You've used your free requests for this module</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Crown size={16} className="text-purple-500" />
-                <span>Subscribe for unlimited access to all modules</span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Star size={16} className="text-blue-500" />
-                <span>Get priority support and new features first</span>
-              </div>
+              <div className="flex items-center gap-3"><span className="text-yellow-500">•</span><span>You've used your free requests for this module</span></div>
+              <div className="flex items-center gap-3"><span className="text-purple-500">•</span><span>Subscribe for unlimited access to all modules</span></div>
+              <div className="flex items-center gap-3"><span className="text-blue-500">•</span><span>Get priority support and new features first</span></div>
             </div>
 
             <div className="flex gap-3">

@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Brain, Sparkle, Robot, Heart, Eye, ChatCircle, Memory, ArrowDown } from '@phosphor-icons/react'
 
 interface HeroSectionProps {
   onExploreModules?: () => void
@@ -22,7 +21,6 @@ export function HeroSection({ onExploreModules }: HeroSectionProps) {
               transition={{ delay: 0.2, duration: 0.8 }}
               className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 shadow-2xl glow-effect"
             >
-              <Robot size={32} color="white" weight="fill" />
             </motion.div>
             <h1 className="text-4xl md:text-6xl font-bold gradient-text">
               AI Digital Friend
@@ -60,7 +58,6 @@ export function HeroSection({ onExploreModules }: HeroSectionProps) {
               className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 glow-effect"
               onClick={onExploreModules}
             >
-              <Sparkles size={20} className="mr-2" />
               Explore Modules
             </Button>
             <Button
@@ -68,7 +65,6 @@ export function HeroSection({ onExploreModules }: HeroSectionProps) {
               variant="outline"
               className="px-8 py-6 text-lg border-border/50 hover:border-accent/50"
             >
-              <Brain size={20} className="mr-2" />
               Learn More
             </Button>
           </motion.div>
@@ -80,15 +76,12 @@ export function HeroSection({ onExploreModules }: HeroSectionProps) {
             className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-sm"
           >
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
-              <Brain size={16} className="text-primary" />
               AI-Powered Analysis
             </div>
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
-              <Heart size={16} className="text-accent" />
               Emotional Intelligence
             </div>
             <div className="flex items-center justify-center gap-2 text-muted-foreground">
-              <Sparkles size={16} className="text-secondary" />
               Real-time Insights
             </div>
           </motion.div>

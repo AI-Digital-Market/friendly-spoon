@@ -1,7 +1,6 @@
-import { ComponentProps } from "react"
+import { ComponentProps, forwardRef } from "react"
 import { Slot } from "@radix-ui/react-slot"
-import ChevronRight from "lucide-react/dist/esm/icons/chevron-right"
-import MoreHorizontal from "lucide-react/dist/esm/icons/more-horizontal"
+// icons removed
 
 import { cn } from "@/lib/utils"
 
@@ -32,23 +31,20 @@ function BreadcrumbItem({ className, ...props }: ComponentProps<"li">) {
   )
 }
 
-function BreadcrumbLink({
-  asChild,
-  className,
-  ...props
-}: ComponentProps<"a"> & {
-  asChild?: boolean
-}) {
-  const Comp = asChild ? Slot : "a"
-
-  return (
-    <Comp
-      data-slot="breadcrumb-link"
-      className={cn("hover:text-foreground transition-colors", className)}
-      {...props}
-    />
-  )
-}
+const BreadcrumbLink = forwardRef<HTMLAnchorElement, ComponentProps<"a"> & { asChild?: boolean }>(
+  ({ asChild, className, ...props }, ref) => {
+    const Comp: any = asChild ? Slot : "a"
+    return (
+      <Comp
+        ref={ref}
+        data-slot="breadcrumb-link"
+        className={cn("hover:text-foreground transition-colors", className)}
+        {...props}
+      />
+    )
+  }
+)
+BreadcrumbLink.displayName = "BreadcrumbLink"
 
 function BreadcrumbPage({ className, ...props }: ComponentProps<"span">) {
   return (
@@ -76,7 +72,7 @@ function BreadcrumbSeparator({
       className={cn("[&>svg]:size-3.5", className)}
       {...props}
     >
-      {children ?? <ChevronRight />}
+  {children ?? <span>/</span>}
     </li>
   )
 }
@@ -93,8 +89,8 @@ function BreadcrumbEllipsis({
       className={cn("flex size-9 items-center justify-center", className)}
       {...props}
     >
-      <MoreHorizontal className="size-4" />
-      <span className="sr-only">More</span>
+  <span className="size-4" aria-hidden="true">…</span>
+  <span className="sr-only">More</span>
     </span>
   )
 }

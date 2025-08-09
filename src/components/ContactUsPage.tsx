@@ -1,16 +1,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { 
-  Envelope, 
-  Phone, 
-  ChatCircle, 
-  MapPin, 
-  Clock,
-  PaperPlaneTilt,
-  DeviceMobile,
-  IdentificationCard
-} from '@phosphor-icons/react'
+// icons removed
 
 interface ContactUsPageProps {
   onBack?: () => void
@@ -22,7 +13,7 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
       title: "Email",
       value: "info@onelastai.com",
       description: "Send us an email for general inquiries and support",
-      icon: Envelope,
+      
       action: "mailto:info@onelastai.com",
       color: "from-blue-500 to-cyan-500"
     },
@@ -30,7 +21,7 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
       title: "Phone",
       value: "+1 (213) 772-0156",
       description: "Call us during business hours for urgent matters",
-      icon: Phone,
+      
       action: "tel:+12137720156",
       color: "from-green-500 to-emerald-500"
     },
@@ -38,7 +29,7 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
       title: "Telegram",
       value: "@onelastai",
       description: "Connect with us on Telegram for quick responses",
-      icon: PaperPlaneTilt,
+      
       action: "https://t.me/onelastai",
       color: "from-blue-400 to-blue-600"
     },
@@ -46,7 +37,7 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
       title: "LINE",
       value: "@onelastai",
       description: "Chat with us on LINE for personalized support",
-      icon: ChatCircle,
+      
       action: "https://line.me/ti/p/@onelastai",
       color: "from-green-400 to-green-600"
     }
@@ -110,9 +101,7 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500">
-              <Envelope size={28} color="white" weight="fill" />
-            </div>
+            <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold">ONE LAST AI</div>
             <h1 className="text-3xl md:text-4xl font-bold gradient-text">Contact Us</h1>
           </div>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -123,7 +112,6 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
         {/* Quick Contact Methods */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {contactMethods.map((method, index) => {
-            const IconComponent = method.icon
             return (
               <motion.div
                 key={method.title}
@@ -136,9 +124,7 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
                   onClick={() => handleContactClick(method.action)}
                 >
                   <CardHeader className="text-center">
-                    <div className={`p-3 rounded-xl bg-gradient-to-r ${method.color} w-fit mx-auto mb-4`}>
-                      <IconComponent size={24} color="white" />
-                    </div>
+                    <div className={`p-3 rounded-xl bg-gradient-to-r ${method.color} w-fit mx-auto mb-4 text-white font-bold`}>AI</div>
                     <CardTitle className="text-lg group-hover:text-accent transition-colors">
                       {method.title}
                     </CardTitle>
@@ -160,10 +146,7 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
         {/* Contact Form */}
         <Card className="mb-16">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <PaperPlaneTilt size={20} />
-              Send us a Message
-            </CardTitle>
+            <CardTitle className="flex items-center gap-2">Send us a Message</CardTitle>
             <CardDescription>
               Fill out the form below and we'll get back to you as soon as possible
             </CardDescription>
@@ -246,7 +229,6 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
                 type="submit"
                 className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 text-white border-0"
               >
-                <PaperPlaneTilt size={16} className="mr-2" />
                 Send Message
               </Button>
             </form>
@@ -257,7 +239,6 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
         <Card className="mb-16">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <IdentificationCard size={20} />
               Department Contacts
             </CardTitle>
             <CardDescription>
@@ -289,7 +270,6 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Clock size={20} />
                 Office Hours
               </CardTitle>
               <CardDescription>
@@ -311,7 +291,6 @@ export function ContactUsPage({ onBack }: ContactUsPageProps) {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <MapPin size={20} />
                 Response Times
               </CardTitle>
               <CardDescription>

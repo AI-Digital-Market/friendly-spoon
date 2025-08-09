@@ -2,26 +2,6 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { 
-  Rocket, 
-  Clock, 
-  Lightbulb, 
-  Globe, 
-  Code, 
-  Database,
-  Shield,
-  Zap,
-  Palette,
-  BookOpen,
-  HeadCircuit,
-  Microphone,
-  Heart,
-  Brain,
-  Skull,
-  Bug,
-  Lock,
-  Eye
-} from '@phosphor-icons/react'
 
 interface UpcomingModulesPageProps {
   onBack?: () => void
@@ -39,7 +19,7 @@ export function UpcomingModulesPage({ onBack }: UpcomingModulesPageProps) {
         >
           <div className="flex items-center justify-center gap-3 mb-4">
             <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500">
-              <Rocket size={28} color="white" weight="fill" />
+      {/* Icon removed */}
             </div>
             <h1 className="text-3xl md:text-4xl font-bold gradient-text">Upcoming Modules</h1>
           </div>
@@ -62,7 +42,7 @@ export function UpcomingModulesPage({ onBack }: UpcomingModulesPageProps) {
               <CardHeader>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-xl bg-gradient-to-r from-blue-500 to-purple-500">
-                    <Heart size={28} color="white" weight="fill" />
+        {/* Icon removed */}
                   </div>
                   <CardTitle className="text-2xl gradient-text">One Last AI</CardTitle>
                 </div>
@@ -78,11 +58,11 @@ export function UpcomingModulesPage({ onBack }: UpcomingModulesPageProps) {
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 text-blue-400">
-                    <Clock size={16} />
+        {/* Icon removed */}
                     <span className="text-sm font-mono">Launch: March 2026</span>
                   </div>
                   <div className="flex items-center gap-2 text-purple-400">
-                    <Brain size={16} />
+        {/* Icon removed */}
                     <span className="text-sm">41 AI Lifestyle Modules</span>
                   </div>
                   <Button className="w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:opacity-90 text-white">
@@ -105,7 +85,7 @@ export function UpcomingModulesPage({ onBack }: UpcomingModulesPageProps) {
               <CardHeader>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 rounded-xl bg-gradient-to-r from-red-500 to-orange-500">
-                    <Skull size={28} color="white" weight="fill" />
+        {/* Icon removed */}
                   </div>
                   <CardTitle className="text-2xl bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
                     One Man Army
@@ -122,11 +102,11 @@ export function UpcomingModulesPage({ onBack }: UpcomingModulesPageProps) {
               <CardContent>
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 text-red-400">
-                    <Shield size={16} />
+        {/* Icon removed */}
                     <span className="text-sm font-mono">Launch: October 1, 2026</span>
                   </div>
                   <div className="flex items-center gap-2 text-orange-400">
-                    <Bug size={16} />
+        {/* Icon removed */}
                     <span className="text-sm">50 Security & Red Team Modules</span>
                   </div>
                   <Button className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:opacity-90 text-white">
@@ -170,7 +150,7 @@ export function UpcomingModulesPage({ onBack }: UpcomingModulesPageProps) {
         <Card className="mb-16">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Lightbulb size={20} />
+      {/* Icon removed */}
               Innovation Focus Areas
             </CardTitle>
             <CardDescription>

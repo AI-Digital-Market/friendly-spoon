@@ -8,7 +8,7 @@ RUN apk update && apk upgrade
 WORKDIR /app
 
 # Optional: system deps for sharp, sass, etc.
-RUN apk add --no-cache libc6-compat=1.2.5.2-r0
+RUN apk add --no-cache libc6-compat
 
 # Copy config files
 COPY package*.json tsconfig.json vite.config.ts tailwind.config.js components.json ./

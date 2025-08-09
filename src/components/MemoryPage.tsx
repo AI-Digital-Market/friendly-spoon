@@ -7,10 +7,10 @@ import { Progress } from '@/components/ui/progress'
 import { 
   Brain, Microphone, MicrophoneSlash, MagnifyingGlass, Plus, 
   FileText, AddressBook, CreditCard, Key, Calendar,
-  Code, Lightning, Copy, Archive, Folder, Tag,
+  Code, Lightning, Archive, Folder, Tag,
   Clock, User, Lock, Eye, EyeSlash, Trash,
   Download, Upload, Star, Heart, BookBookmark,
-  SpeakerHigh, SpeakerSlash, MagnifyingGlass, Robot
+  SpeakerHigh, SpeakerSlash, Robot   
 } from '@phosphor-icons/react'
 import { useState, useRef, useEffect } from 'react'
 
@@ -191,7 +191,7 @@ export function MemoryPage({ onBack }: MemoryPageProps) {
 
   const memoryTypes = [
     { id: 'text', name: 'Text Note', icon: FileText, color: 'bg-blue-500/20 text-blue-300' },
-    { id: 'contact', name: 'Contact', icon: ContactBook, color: 'bg-green-500/20 text-green-300' },
+  { id: 'contact', name: 'Contact', color: 'bg-green-500/20 text-green-300' },
     { id: 'password', name: 'Password', icon: Key, color: 'bg-red-500/20 text-red-300' },
     { id: 'card', name: 'Card Info', icon: CreditCard, color: 'bg-purple-500/20 text-purple-300' },
     { id: 'note', name: 'Personal Note', icon: FileText, color: 'bg-orange-500/20 text-orange-300' },
@@ -485,7 +485,6 @@ class MemoryAI {
                   Perfect Recall
                 </Badge>
                 <Badge variant="secondary" className="bg-blue-500/20 text-blue-300 border-blue-500/30">
-                  <Search className="w-4 h-4 mr-1" />
                   Smart Search
                 </Badge>
                 <Badge variant="secondary" className="bg-green-500/20 text-green-300 border-green-500/30">
@@ -569,25 +568,21 @@ class MemoryAI {
 
                 {/* Category Filters */}
                 <div className="flex flex-wrap gap-2">
-                  {categories.map(category => {
-                    const IconComponent = category.icon
-                    return (
-                      <Button
-                        key={category.id}
-                        variant={selectedCategory === category.id ? "default" : "outline"}
-                        size="sm"
-                        onClick={() => setSelectedCategory(category.id)}
-                        className={`${
-                          selectedCategory === category.id
-                            ? 'bg-purple-500 hover:bg-purple-600 text-white'
-                            : 'border-slate-600 text-gray-300 hover:bg-slate-700'
-                        }`}
-                      >
-                        <IconComponent size={16} className="mr-2" />
-                        {category.name} ({category.count})
-                      </Button>
-                    )
-                  })}
+                  {categories.map(category => (
+                    <Button
+                      key={category.id}
+                      variant={selectedCategory === category.id ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setSelectedCategory(category.id)}
+                      className={`${
+                        selectedCategory === category.id
+                          ? 'bg-purple-500 hover:bg-purple-600 text-white'
+                          : 'border-slate-600 text-gray-300 hover:bg-slate-700'
+                      }`}
+                    >
+                      {category.name} ({category.count})
+                    </Button>
+                  ))}
                 </div>
               </CardContent>
             </Card>
@@ -686,7 +681,6 @@ class MemoryAI {
               <div className="space-y-4">
                 <AnimatePresence>
                   {searchedMemories.map((memory, index) => {
-                    const TypeIcon = getTypeIcon(memory.type)
                     return (
                       <motion.div
                         key={memory.id}
@@ -699,8 +693,8 @@ class MemoryAI {
                           <CardContent className="p-6">
                             <div className="flex items-start justify-between mb-3">
                               <div className="flex items-center gap-3">
-                                <div className={`p-2 rounded-lg ${getTypeColor(memory.type)}`}>
-                                  <TypeIcon size={20} />
+                                <div className={`p-2 rounded-lg ${getTypeColor(memory.type)}`} aria-hidden>
+                                  {memory.type.toUpperCase()}
                                 </div>
                                 <div>
                                   <h3 className="text-white font-medium group-hover:text-purple-300 transition-colors">
@@ -927,7 +921,6 @@ class MemoryAI {
                             onClick={() => navigator.clipboard.writeText(generateCode())}
                             className="h-6 px-2 text-xs text-gray-400 hover:text-white"
                           >
-                            <Copy size={12} className="mr-1" />
                             Copy
                           </Button>
                         </div>

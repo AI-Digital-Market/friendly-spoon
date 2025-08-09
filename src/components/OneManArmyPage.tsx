@@ -2,55 +2,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { 
-  Skull, 
-  Calendar, 
-  Lock, 
-  Target, 
-  Globe, 
-  Link,
-  Shield,
-  Bug,
-  Eye,
-  Crosshair,
-  Detective,
-  Sword,
-  Binoculars,
-  FingerprintSimple,
-  WifiHigh,
-  Key,
-  Ghost,
-  Lightning,
-  Bug,
-  Database,
-  Terminal,
-  Virus,
-  Warning,
-  Cpu,
-  Fire,
-  Knife,
-  Radioactive,
-  Atom,
-  Alien,
-  Atom,
-  Skull as SkullIcon,
-  ShieldWarning,
-  Password,
-  Envelope,
-  FileX,
-  MouseSimple,
-  Usb,
-  CloudArrowDown,
-  Cpu,
-  Bug,
-  User,
-  HandGrabbing,
-  Fish,
-  Timer,
-  Keyhole,
-  EyeSlash,
-  MagnifyingGlass
-} from '@phosphor-icons/react'
+// Icons removed per requirement
 
 interface OneManArmyPageProps {
   onBack?: () => void
@@ -63,7 +15,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "ai_giant_sniffer",
       title: "AI Giant Sniffer",
       description: "Advanced AI-powered packet sniffer for deep traffic inspection and network analysis.",
-      icon: Eye,
+  // icon removed
       color: "from-red-500 to-orange-500",
       category: "Network Analysis"
     },
@@ -72,7 +24,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "antiforensicai",
       title: "AntiForensicAI",
       description: "Removes digital footprints and evades forensic tools for testing detection capabilities.",
-      icon: EyeSlash,
+  // icon removed
       color: "from-gray-500 to-slate-500",
       category: "Anti-Forensics"
     },
@@ -81,7 +33,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "blackmamba",
       title: "Black Mamba",
       description: "Stealth payload injector using encrypted delivery mechanisms for penetration testing.",
-      icon: Knife,
+  // icon removed
       color: "from-black to-gray-600",
       category: "Payload Injection"
     },
@@ -90,7 +42,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "black_sea_leviathan",
       title: "Black Sea Leviathan",
       description: "Dark web reconnaissance and monitoring bot for threat intelligence gathering.",
-      icon: Alien,
+  // icon removed
       color: "from-indigo-600 to-purple-600",
       category: "Dark Web Intel"
     },
@@ -99,7 +51,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "bruteforcex",
       title: "BruteForceX",
       description: "Automated AI-based brute-force login attack tester for security assessment.",
-      icon: Lightning,
+  // icon removed
       color: "from-yellow-500 to-orange-500",
       category: "Authentication Testing"
     },
@@ -108,7 +60,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "c2relay",
       title: "C2 Relay",
       description: "Command & Control relay module for red-team emulation and testing.",
-      icon: Router,
+  // icon removed
       color: "from-blue-600 to-indigo-600",
       category: "Command & Control"
     },
@@ -117,7 +69,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "c2sim",
       title: "C2 Simulator",
       description: "Simulates full C2 server behaviors for test environments and training.",
-      icon: Terminal,
+  // icon removed
       color: "from-green-600 to-teal-600",
       category: "Command & Control"
     },
@@ -126,7 +78,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "cyber_detective_cid",
       title: "Cyber Detective CID",
       description: "AI agent to trace cyber footprints and analyze Criminal Investigation Department data.",
-      icon: Detective,
+  // icon removed
       color: "from-purple-500 to-violet-500",
       category: "Digital Forensics"
     },
@@ -135,7 +87,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "cyber_intelligence_detective",
       title: "Cyber Intelligence Detective",
       description: "Collects and correlates cyber intelligence feeds for threat analysis.",
-      icon: MagnifyingGlass,
+  // icon removed
       color: "from-cyan-500 to-blue-500",
       category: "Threat Intelligence"
     },
@@ -144,7 +96,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "enhanced_auto_hunter",
       title: "Enhanced Auto Hunter",
       description: "Detects vulnerabilities in live targets autonomously using AI-driven scanning.",
-      icon: Crosshair,
+  // icon removed
       color: "from-red-600 to-pink-600",
       category: "Vulnerability Scanning"
     },
@@ -153,7 +105,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "formsnatchai",
       title: "FormSnatchAI",
       description: "Captures form input data for simulation and security analysis purposes.",
-      icon: HandGrabbing,
+  // icon removed
       color: "from-orange-500 to-red-500",
       category: "Data Capture"
     },
@@ -162,7 +114,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "fxinterceptorai",
       title: "FX InterceptorAI",
       description: "Intercepts API and JS-based data exfiltration for security testing.",
-      icon: Shield,
+  // icon removed
       color: "from-blue-500 to-purple-500",
       category: "API Security"
     },
@@ -171,7 +123,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "ghostscrollai",
       title: "GhostScrollAI",
       description: "Social media and blog auto-scroller for intelligence gathering operations.",
-      icon: Ghost,
+  // icon removed
       color: "from-gray-400 to-slate-400",
       category: "OSINT"
     },
@@ -180,7 +132,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "intercept_proxy",
       title: "Intercept Proxy",
       description: "Man-in-the-middle proxy for encrypted traffic testing and analysis.",
-      icon: Router,
+  // icon removed
       color: "from-indigo-500 to-blue-500",
       category: "Network Interception"
     },
@@ -189,7 +141,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "johnnyai",
       title: "JohnnyAI",
       description: "AI bot for simulating real-user behavior across web applications.",
-      icon: Bug,
+  // icon removed
       color: "from-green-500 to-emerald-500",
       category: "Behavior Simulation"
     },
@@ -198,7 +150,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "keyloggerx",
       title: "KeyloggerX",
       description: "Simulated keylogger for keyboard activity testing and monitoring.",
-      icon: Key,
+  // icon removed
       color: "from-yellow-600 to-orange-600",
       category: "Keystroke Monitoring"
     },
@@ -207,7 +159,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "lateralmover",
       title: "Lateral Mover",
       description: "Simulates lateral movement across networks for penetration testing.",
-      icon: Sword,
+  // icon removed
       color: "from-red-500 to-pink-500",
       category: "Network Penetration"
     },
@@ -216,7 +168,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "logwiper",
       title: "Log Wiper",
       description: "Cleans and manipulates logs for forensics testing and evasion techniques.",
-      icon: FileX,
+  // icon removed
       color: "from-gray-500 to-red-500",
       category: "Log Manipulation"
     },
@@ -225,7 +177,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "magecart_injectx",
       title: "Magecart InjectX",
       description: "Detects and simulates Magecart-style attacks for e-commerce security testing.",
-      icon: Warning,
+  // icon removed
       color: "from-orange-600 to-red-600",
       category: "Web Skimming"
     },
@@ -234,7 +186,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "mailsnatcher",
       title: "Mail Snatcher",
       description: "Email traffic interceptor and analyzer for communication security testing.",
-      icon: Envelope,
+  // icon removed
       color: "from-blue-600 to-cyan-600",
       category: "Email Security"
     },
@@ -243,7 +195,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "metamorph_ai",
       title: "Metamorph AI",
       description: "Polymorphic engine for payload shape-shifting and evasion testing.",
-      icon: Atom,
+  // icon removed
       color: "from-purple-600 to-pink-600",
       category: "Payload Morphing"
     },
@@ -252,7 +204,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "network_phantom_scanner",
       title: "Network Phantom Scanner",
       description: "Stealth network scanning module for reconnaissance operations.",
-      icon: Ghost,
+  // icon removed
       color: "from-gray-600 to-indigo-600",
       category: "Network Scanning"
     },
@@ -261,7 +213,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "professorai",
       title: "ProfessorAI",
       description: "AI-based tutor and advisory agent for cybersecurity training and education.",
-      icon: Shield,
+  // icon removed
       color: "from-green-600 to-blue-600",
       category: "Education"
     },
@@ -270,7 +222,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "payload_injector",
       title: "Payload Injector",
       description: "Delivers test payloads into live or emulated targets for security assessment.",
-      icon: Radioactive,
+  // icon removed
       color: "from-yellow-500 to-red-500",
       category: "Payload Delivery"
     },
@@ -279,7 +231,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "reversex_ai",
       title: "ReverseX AI",
       description: "Reverse engineering assistant for binary deconstruction and analysis.",
-      icon: Processor,
+  // icon removed
       color: "from-cyan-600 to-purple-600",
       category: "Reverse Engineering"
     },
@@ -288,7 +240,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "socialhack_master",
       title: "SocialHack Master",
       description: "Simulates social engineering techniques for awareness and training.",
-      icon: Fish,
+  // icon removed
       color: "from-pink-500 to-red-500",
       category: "Social Engineering"
     },
@@ -297,7 +249,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "backdoor_bender",
       title: "Backdoor Bender",
       description: "Tests persistence mechanisms using stealthy backdoors and access methods.",
-      icon: Keyhole,
+  // icon removed
       color: "from-red-600 to-orange-600",
       category: "Persistence Testing"
     },
@@ -306,7 +258,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "stealthrat_ai",
       title: "StealthRAT AI",
       description: "Remote access tool for ethical red-team simulations and testing.",
-      icon: Eye,
+  // icon removed
       color: "from-gray-700 to-red-700",
       category: "Remote Access"
     },
@@ -315,7 +267,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "spyglass_ai",
       title: "Spyglass AI",
       description: "Automated surveillance through web scraping and intelligence gathering.",
-      icon: Binoculars,
+  // icon removed
       color: "from-blue-500 to-indigo-500",
       category: "Surveillance"
     },
@@ -324,7 +276,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "browser_spyder",
       title: "Browser Spyder",
       description: "Simulates browser-based exploits and client-side attack vectors.",
-      icon: Spider,
+  // icon removed
       color: "from-purple-500 to-red-500",
       category: "Browser Exploitation"
     },
@@ -333,7 +285,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "dns_tunnel_ai",
       title: "DNS Tunnel AI",
       description: "Emulates DNS tunneling attacks for covert communication testing.",
-      icon: Router,
+  // icon removed
       color: "from-cyan-500 to-blue-500",
       category: "DNS Tunneling"
     },
@@ -342,7 +294,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "packet_sniff_ai",
       title: "Packet Sniff AI",
       description: "Captures and decodes packet-level data for network analysis.",
-      icon: Eye,
+  // icon removed
       color: "from-green-500 to-cyan-500",
       category: "Packet Analysis"
     },
@@ -351,7 +303,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "rce_exploiter",
       title: "RCE Exploiter",
       description: "Performs Remote Code Execution testing in controlled environments.",
-      icon: Terminal,
+  // icon removed
       color: "from-red-500 to-pink-500",
       category: "Code Execution"
     },
@@ -360,7 +312,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "rootkit_genie",
       title: "Rootkit Genie",
       description: "Simulated rootkit behavior for detection and response testing.",
-      icon: Nuclear,
+  // icon removed
       color: "from-orange-600 to-red-600",
       category: "Rootkit Simulation"
     },
@@ -369,7 +321,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "trojanfabricator",
       title: "Trojan Fabricator",
       description: "Builds and analyzes Trojan file behavior for malware research.",
-      icon: Virus,
+  // icon removed
       color: "from-purple-600 to-red-600",
       category: "Malware Analysis"
     },
@@ -378,7 +330,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "ai_breach_lab",
       title: "AI Breach Lab",
       description: "Full AI suite to simulate system breaches and attack scenarios.",
-      icon: Fire,
+  // icon removed
       color: "from-red-600 to-orange-600",
       category: "Breach Simulation"
     },
@@ -387,7 +339,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "darknet_explorer",
       title: "Darknet Explorer",
       description: "Maps and monitors dark web content for threat intelligence.",
-      icon: Alien,
+  // icon removed
       color: "from-black to-purple-600",
       category: "Dark Web"
     },
@@ -396,7 +348,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "hookmaster_ai",
       title: "HookMaster AI",
       description: "Injects JavaScript hooks for tracking and behavior analysis.",
-      icon: Bug,
+  // icon removed
       color: "from-yellow-500 to-orange-500",
       category: "Code Injection"
     },
@@ -405,7 +357,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "tokenstealer",
       title: "Token Stealer",
       description: "Simulates token stealing vectors for authentication security testing.",
-      icon: Password,
+  // icon removed
       color: "from-blue-500 to-purple-500",
       category: "Token Security"
     },
@@ -414,7 +366,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "clipboardghost",
       title: "Clipboard Ghost",
       description: "Clipboard data interceptor for sensitive information leakage testing.",
-      icon: Ghost,
+  // icon removed
       color: "from-gray-500 to-blue-500",
       category: "Data Interception"
     },
@@ -423,7 +375,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "usb_infect_ai",
       title: "USB Infect AI",
       description: "Simulates USB-based payload drops and autorun exploitation.",
-      icon: Usb,
+  // icon removed
       color: "from-green-500 to-blue-500",
       category: "USB Security"
     },
@@ -432,7 +384,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "remote_exec_ai",
       title: "Remote Exec AI",
       description: "Remotely executes ethical test scripts for penetration testing.",
-      icon: CloudArrowDown,
+  // icon removed
       color: "from-cyan-500 to-purple-500",
       category: "Remote Execution"
     },
@@ -441,7 +393,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "exploit_injector",
       title: "Exploit Injector",
       description: "Injects exploits in live or sandbox applications for vulnerability testing.",
-      icon: Radioactive,
+  // icon removed
       color: "from-yellow-600 to-red-600",
       category: "Exploit Testing"
     },
@@ -450,7 +402,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "wormx_ai",
       title: "WormX AI",
       description: "Models worm-like self-replication for network propagation testing.",
-      icon: Worm,
+  // icon removed
       color: "from-green-600 to-yellow-600",
       category: "Worm Simulation"
     },
@@ -459,7 +411,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "credential_stuffer",
       title: "Credential Stuffer",
       description: "Automated credential stuffing simulator for authentication testing.",
-      icon: UserX,
+  // icon removed
       color: "from-red-500 to-orange-500",
       category: "Credential Testing"
     },
@@ -468,7 +420,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "sessionhijacker",
       title: "Session Hijacker",
       description: "Tests session token capture and reuse for web application security.",
-      icon: HandGrabbing,
+  // icon removed
       color: "from-purple-500 to-pink-500",
       category: "Session Security"
     },
@@ -477,7 +429,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "phishbot",
       title: "PhishBot",
       description: "Auto-generates phishing email simulations for awareness training.",
-      icon: Fish,
+  // icon removed
       color: "from-blue-500 to-red-500",
       category: "Phishing Simulation"
     },
@@ -486,7 +438,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "persistence_engine",
       title: "Persistence Engine",
       description: "Tests various persistence strategies for advanced threat simulation.",
-      icon: Timer,
+  // icon removed
       color: "from-orange-500 to-red-500",
       category: "Persistence Testing"
     },
@@ -495,7 +447,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "keyclone_ai",
       title: "KeyClone AI",
       description: "AI-driven keystroke replicator for behavioral analysis and testing.",
-      icon: Key,
+  // icon removed
       color: "from-yellow-500 to-orange-500",
       category: "Keystroke Analysis"
     },
@@ -504,7 +456,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
       name: "invisible_listener",
       title: "Invisible Listener",
       description: "Background listener for port surveillance and network monitoring.",
-      icon: EyeSlash,
+  // icon removed
       color: "from-gray-600 to-black",
       category: "Network Monitoring"
     }
@@ -522,9 +474,7 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
           className="text-center mb-16"
         >
           <div className="flex items-center justify-center gap-3 mb-6">
-            <div className="p-4 rounded-xl bg-gradient-to-r from-red-500 to-orange-500">
-              <Skull size={32} color="white" weight="fill" />
-            </div>
+            <div className="p-4 rounded-xl bg-gradient-to-r from-red-500 to-orange-500 text-white font-bold">AI</div>
             <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-red-400 to-orange-400 bg-clip-text text-transparent">
               One Man Army
             </h1>
@@ -535,35 +485,17 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
           </p>
           
           {/* Project Details */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
-            <div className="flex items-center justify-center gap-2 bg-red-500/10 rounded-lg p-3">
-              <Calendar size={20} className="text-red-400" />
-              <span className="text-sm font-mono">Launch: 1st October 2026</span>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
+              <div className="flex items-center justify-center gap-2 bg-red-500/10 rounded-lg p-3"><span className="text-red-400">•</span><span className="text-sm font-mono">Launch: 1st October 2026</span></div>
+              <div className="flex items-center justify-center gap-2 bg-orange-500/10 rounded-lg p-3"><span className="text-orange-400">•</span><span className="text-sm">Premium Users (1+ Year)</span></div>
+              <div className="flex items-center justify-center gap-2 bg-yellow-500/10 rounded-lg p-3"><span className="text-yellow-400">•</span><span className="text-sm">Educational & Testing</span></div>
+              <div className="flex items-center justify-center gap-2 bg-red-600/10 rounded-lg p-3"><span className="text-red-400">•</span><span className="text-sm">Youth Cybersecurity</span></div>
+              <div className="flex items-center justify-center gap-2 bg-orange-600/10 rounded-lg p-3 lg:col-span-2"><span className="text-orange-400">•</span><span className="text-sm font-mono">https://onemanarmy.ai</span></div>
             </div>
-            <div className="flex items-center justify-center gap-2 bg-orange-500/10 rounded-lg p-3">
-              <Lock size={20} className="text-orange-400" />
-              <span className="text-sm">Premium Users (1+ Year)</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 bg-yellow-500/10 rounded-lg p-3">
-              <Target size={20} className="text-yellow-400" />
-              <span className="text-sm">Educational & Testing</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 bg-red-600/10 rounded-lg p-3">
-              <ShieldWarning size={20} className="text-red-400" />
-              <span className="text-sm">Youth Cybersecurity</span>
-            </div>
-            <div className="flex items-center justify-center gap-2 bg-orange-600/10 rounded-lg p-3 lg:col-span-2">
-              <Link size={20} className="text-orange-400" />
-              <span className="text-sm font-mono">https://onemanarmy.ai</span>
-            </div>
-          </div>
 
           {/* Warning Notice */}
           <div className="bg-gradient-to-r from-red-500/10 to-orange-500/10 border border-red-500/30 rounded-lg p-4 max-w-3xl mx-auto">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <Warning size={20} className="text-red-400" />
-              <span className="font-semibold text-red-400">Educational Use Only</span>
-            </div>
+            <div className="flex items-center justify-center gap-2 mb-2"><span className="text-red-400">⚠</span><span className="font-semibold text-red-400">Educational Use Only</span></div>
             <p className="text-sm text-muted-foreground">
               All modules are designed for ethical testing, education, and awareness. 
               Use only in authorized environments with proper permissions.
@@ -583,7 +515,6 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
         {/* Cyber Modules Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
           {cyberModules.map((module, index) => {
-            const IconComponent = module.icon
             return (
               <motion.div
                 key={module.id}
@@ -608,8 +539,8 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
                   
                   <CardHeader className="pb-4 relative">
                     <div className="flex items-center justify-between mb-3">
-                      <div className={`p-3 rounded-xl bg-gradient-to-r ${module.color} shadow-lg group-hover:shadow-xl transition-shadow duration-300`}>
-                        <IconComponent size={24} className="text-white" />
+                      <div className={`p-3 rounded-xl bg-gradient-to-r ${module.color} shadow-lg group-hover:shadow-xl transition-shadow duration-300 text-white font-bold`}>
+                        AI
                       </div>
                       <Badge variant="outline" className="text-xs border-red-500/30 text-red-400">
                         {String(module.id).padStart(2, '0')}
@@ -631,11 +562,10 @@ export function OneManArmyPage({ onBack }: OneManArmyPageProps) {
                         {module.category}
                       </Badge>
                       
-                      <Button 
+                      <Button
                         className={`w-full bg-gradient-to-r ${module.color} hover:opacity-90 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300`}
                         disabled
                       >
-                        <Skull size={14} className="mr-2" />
                         October 2026
                       </Button>
                     </div>

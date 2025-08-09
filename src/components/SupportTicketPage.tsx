@@ -9,16 +9,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
-import { 
-  Headphones, 
-  Bug, 
-  QuestionMark, 
-  Gear, 
-  Star,
-  WaveTriangle,
-  CheckCircle,
-  Clock
-} from '@phosphor-icons/react'
+// icons removed
 import { useState } from 'react'
 
 interface SupportTicketPageProps {
@@ -48,16 +39,14 @@ export function SupportTicketPage({ onBack }: SupportTicketPageProps) {
       value: 'low', 
       label: 'Low', 
       description: 'General questions, feature requests',
-      color: 'bg-green-500/20 text-green-400',
-      icon: QuestionMark,
+  color: 'bg-green-500/20 text-green-400',
       eta: '2-3 business days'
     },
     { 
       value: 'medium', 
       label: 'Medium', 
       description: 'Issues affecting functionality',
-      color: 'bg-yellow-500/20 text-yellow-400',
-      icon: Gear,
+  color: 'bg-yellow-500/20 text-yellow-400',
       eta: '1-2 business days'
     },
     { 
@@ -65,15 +54,14 @@ export function SupportTicketPage({ onBack }: SupportTicketPageProps) {
       label: 'High', 
       description: 'Service disruptions, critical bugs',
       color: 'bg-orange-500/20 text-orange-400',
-      icon: AlertTriangle,
+  // icon removed
       eta: '4-8 hours'
     },
     { 
       value: 'urgent', 
       label: 'Urgent', 
       description: 'Security issues, complete service outage',
-      color: 'bg-red-500/20 text-red-400',
-      icon: Bug,
+  color: 'bg-red-500/20 text-red-400',
       eta: '1-2 hours'
     }
   ]
@@ -106,8 +94,8 @@ export function SupportTicketPage({ onBack }: SupportTicketPageProps) {
           className="text-center mb-12"
         >
           <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="p-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500">
-              <Headphones size={28} color="white" weight="fill" />
+            <div className="p-3 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold">
+              ONE LAST AI
             </div>
             <h1 className="text-3xl md:text-4xl font-bold gradient-text">Support Ticket</h1>
           </div>
@@ -200,7 +188,6 @@ export function SupportTicketPage({ onBack }: SupportTicketPageProps) {
                 </label>
                 <div className="grid md:grid-cols-2 gap-4">
                   {priorities.map((priority) => {
-                    const IconComponent = priority.icon
                     return (
                       <div
                         key={priority.value}
@@ -212,7 +199,7 @@ export function SupportTicketPage({ onBack }: SupportTicketPageProps) {
                         onClick={() => setSelectedPriority(priority.value)}
                       >
                         <div className="flex items-start gap-3">
-                          <IconComponent size={20} className="mt-0.5" />
+                          <span className="mt-0.5 inline-block w-5 h-5 rounded bg-current opacity-40" aria-hidden />
                           <div className="flex-1">
                             <div className="flex items-center gap-2 mb-1">
                               <span className="font-medium">{priority.label}</span>
@@ -319,7 +306,6 @@ export function SupportTicketPage({ onBack }: SupportTicketPageProps) {
                 className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:opacity-90 text-white border-0"
                 disabled={!selectedModule || !selectedCategory || !selectedPriority}
               >
-                <Headphones size={16} className="mr-2" />
                 Submit Support Ticket
               </Button>
             </form>

@@ -1,77 +1,63 @@
+import React from 'react'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { 
-  Lightbulb, 
-  PaperPlaneTilt, 
-  Star, 
-  Sparkle, 
-  Heart, 
-  Rocket,
-  Brain,
-  MagicWand,
-  Palette,
-  Code,
-  Users,
-  Gear
-} from '@phosphor-icons/react'
-
+import { Button } from './ui/button'
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from './ui/card'
+import { Input } from './ui/input'
+import { Textarea } from './ui/textarea'
 interface SuggestionsPageProps {
   onBack?: () => void
 }
-
 export function SuggestionsPage({ onBack }: SuggestionsPageProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = React.useState({
     name: '',
     email: '',
     category: '',
     title: '',
     description: '',
     priority: ''
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
+  });
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   const suggestionCategories = [
-    { id: 'new-module', label: 'New AI Module', icon: Brain, color: 'from-blue-500 to-cyan-500' },
-    { id: 'feature-improvement', label: 'Feature Enhancement', icon: Gear, color: 'from-green-500 to-emerald-500' },
-    { id: 'ui-ux', label: 'UI/UX Design', icon: Palette, color: 'from-purple-500 to-pink-500' },
-    { id: 'integration', label: 'API Integration', icon: Code, color: 'from-orange-500 to-red-500' },
-    { id: 'community', label: 'Community Feature', icon: Users, color: 'from-teal-500 to-blue-500' },
-    { id: 'other', label: 'Other Ideas', icon: Magic, color: 'from-indigo-500 to-purple-500' }
-  ]
+    { id: 'new-module', label: 'New AI Module', color: 'from-blue-500 to-cyan-500' },
+    { id: 'feature-improvement', label: 'Feature Enhancement', color: 'from-green-500 to-emerald-500' },
+    { id: 'ui-ux', label: 'UI/UX Design', color: 'from-purple-500 to-pink-500' },
+    { id: 'integration', label: 'API Integration', color: 'from-orange-500 to-red-500' },
+    { id: 'community', label: 'Community Feature', color: 'from-teal-500 to-blue-500' },
+    { id: 'other', label: 'Other Ideas', color: 'from-indigo-500 to-purple-500' }
+  ];
 
   const priorityLevels = [
     { id: 'low', label: 'Nice to Have', description: 'Cool idea for future consideration', color: 'from-gray-500 to-slate-500' },
     { id: 'medium', label: 'Valuable Addition', description: 'Would improve user experience', color: 'from-yellow-500 to-orange-500' },
     { id: 'high', label: 'Game Changer', description: 'Revolutionary idea that could transform our platform', color: 'from-green-500 to-emerald-500' },
     { id: 'critical', label: 'Must Have', description: 'Essential feature missing from our platform', color: 'from-red-500 to-pink-500' }
-  ]
+  ];
+
+  const floatingElements = [
+    { delay: 0, duration: 6 },
+    { delay: 1, duration: 8 },
+    { delay: 2, duration: 7 },
+    { delay: 3, duration: 9 },
+    { delay: 4, duration: 6 }
+  ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
       [e.target.name]: e.target.value
-    }))
-  }
-
-  const handleCategorySelect = (categoryId: string) => {
-    setFormData(prev => ({ ...prev, category: categoryId }))
-  }
+    }));
+  };
 
   const handlePrioritySelect = (priorityId: string) => {
-    setFormData(prev => ({ ...prev, priority: priorityId }))
-  }
+    setFormData(prev => ({ ...prev, priority: priorityId }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-
-    // Create email content
-    const emailSubject = `💡 New Suggestion: ${formData.title}`
+    e.preventDefault();
+    setIsSubmitting(true);
+    const emailSubject = `💡 New Suggestion: ${formData.title}`;
     const emailBody = `
 New Suggestion Received from AI Digital Friend Platform
 
@@ -80,76 +66,56 @@ New Suggestion Received from AI Digital Friend Platform
 🏷️ Category: ${suggestionCategories.find(c => c.id === formData.category)?.label || 'Not specified'}
 📊 Priority: ${priorityLevels.find(p => p.id === formData.priority)?.label || 'Not specified'}
 
-💡 Suggestion Title: ${formData.title}
-
 📝 Description:
 ${formData.description}
 
 ---
 Submitted via: onelastai.com/suggestions
 Time: ${new Date().toLocaleString()}
-    `.trim()
-
+    `.trim();
     try {
-      // Create mailto link
-      const mailtoLink = `mailto:info@onelastai.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`
-      
-      // Open email client
-      window.location.href = mailtoLink
-      
-      // Show success state
+      const mailtoLink = `mailto:info@onelastai.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+      window.location.href = mailtoLink;
       setTimeout(() => {
-        setIsSubmitting(false)
-        setIsSubmitted(true)
-      }, 1000)
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+      }, 1000);
     } catch (error) {
-      console.error('Error submitting suggestion:', error)
-      setIsSubmitting(false)
+      console.error('Error submitting suggestion:', error);
+      setIsSubmitting(false);
     }
-  }
-
-  const floatingElements = [
-    { icon: Lightbulb, delay: 0, duration: 6 },
-    { icon: Star, delay: 1, duration: 8 },
-    { icon: Sparkles, delay: 2, duration: 7 },
-    { icon: Heart, delay: 3, duration: 9 },
-    { icon: Rocket, delay: 4, duration: 6 }
-  ]
+  };
 
   if (isSubmitted) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-foreground pt-20 relative overflow-hidden">
         {/* Floating Animation Background */}
         <div className="absolute inset-0 overflow-hidden">
-          {floatingElements.map((element, index) => {
-            const IconComponent = element.icon
-            return (
-              <motion.div
-                key={index}
-                className="absolute opacity-20"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-                animate={{
-                  y: [-20, -100, -20],
-                  x: [-10, 10, -10],
-                  rotate: [0, 360],
-                  scale: [1, 1.2, 1],
-                }}
-                transition={{
-                  duration: element.duration,
-                  delay: element.delay,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <IconComponent size={24} className="text-white" />
-              </motion.div>
-            )
-          })}
+          {floatingElements.map((element, index) => (
+            <motion.div
+              key={index}
+              className="absolute opacity-20"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+              }}
+              animate={{
+                y: [-20, -100, -20],
+                x: [-10, 10, -10],
+                rotate: [0, 360],
+                scale: [1, 1.2, 1],
+              }}
+              transition={{
+                duration: element.duration,
+                delay: element.delay,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              {/* No icon rendering */}
+            </motion.div>
+          ))}
         </div>
-
         <div className="container mx-auto px-4 py-16 relative z-10">
           <motion.div
             initial={{ scale: 0, opacity: 0 }}
@@ -170,11 +136,10 @@ Time: ${new Date().toLocaleString()}
                 }}
                 className="w-24 h-24 mx-auto mb-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center"
               >
-                <PaperPlaneTilt size={40} color="white" weight="fill" />
+                {/* No icon rendering */}
               </motion.div>
               <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 rounded-full opacity-30 blur-xl animate-pulse"></div>
             </div>
-
             <h1 className="text-4xl font-bold bg-gradient-to-r from-green-400 via-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
               🎉 Suggestion Submitted!
             </h1>
@@ -184,7 +149,6 @@ Time: ${new Date().toLocaleString()}
             <p className="text-md text-white/60 mb-8">
               Thank you for helping us build the future of AI together. We truly value your creativity and vision!
             </p>
-            
             <div className="flex gap-4 justify-center">
               <Button 
                 onClick={() => {
@@ -211,33 +175,30 @@ Time: ${new Date().toLocaleString()}
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-foreground pt-20 relative overflow-hidden">
       {/* Floating Animation Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {floatingElements.map((element, index) => {
-          const IconComponent = element.icon
-          return (
-            <motion.div
-              key={index}
-              className="absolute opacity-10"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-              }}
-              animate={{
-                y: [-20, -100, -20],
-                x: [-10, 10, -10],
-                rotate: [0, 360],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: element.duration,
-                delay: element.delay,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              <IconComponent size={32} className="text-white" />
-            </motion.div>
-          )
-        })}
+        {floatingElements.map((element, index) => (
+          <motion.div
+            key={index}
+            className="absolute opacity-10"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [-20, -100, -20],
+              x: [-10, 10, -10],
+              rotate: [0, 360],
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: element.duration,
+              delay: element.delay,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            {/* No icon rendering */}
+          </motion.div>
+        ))}
       </div>
 
       {/* Gradient Orbs */}
@@ -265,7 +226,7 @@ Time: ${new Date().toLocaleString()}
           >
             <div className="relative">
               <div className="p-4 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-500">
-                <Lightbulb size={32} color="white" weight="fill" />
+                {/* No icon rendering */}
               </div>
               <div className="absolute -inset-2 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl opacity-30 blur-lg animate-ping"></div>
             </div>
@@ -291,7 +252,7 @@ Time: ${new Date().toLocaleString()}
             <Card className="bg-black/20 border-white/10 backdrop-blur-lg">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
-                  <Users size={20} />
+                  {/* No icon rendering */}
                   👋 Tell Us About Yourself
                 </CardTitle>
                 <CardDescription className="text-white/60">
@@ -337,7 +298,7 @@ Time: ${new Date().toLocaleString()}
             <Card className="bg-black/20 border-white/10 backdrop-blur-lg">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
-                  <Palette size={20} />
+                  {/* No icon rendering */}
                   🎨 What Type of Idea Is This?
                 </CardTitle>
                 <CardDescription className="text-white/60">
@@ -347,7 +308,6 @@ Time: ${new Date().toLocaleString()}
               <CardContent>
                 <div className="grid md:grid-cols-3 gap-4">
                   {suggestionCategories.map((category, index) => {
-                    const IconComponent = category.icon
                     return (
                       <motion.button
                         key={category.id}
@@ -357,16 +317,14 @@ Time: ${new Date().toLocaleString()}
                         transition={{ delay: 0.1 * index }}
                         whileHover={{ scale: 1.05, y: -5 }}
                         whileTap={{ scale: 0.95 }}
-                        onClick={() => handleCategorySelect(category.id)}
+                        onClick={() => setFormData(prev => ({ ...prev, category: category.id }))}
                         className={`p-4 rounded-xl border-2 transition-all duration-300 text-left ${
                           formData.category === category.id
                             ? 'border-white/50 bg-white/20'
                             : 'border-white/20 bg-white/5 hover:border-white/30 hover:bg-white/10'
                         }`}
                       >
-                        <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} w-fit mb-3`}>
-                          <IconComponent size={20} color="white" />
-                        </div>
+                        <div className={`p-2 rounded-lg bg-gradient-to-r ${category.color} w-fit mb-3`}></div>
                         <h3 className="font-semibold text-white mb-1">{category.label}</h3>
                         <div className="w-full h-1 bg-gradient-to-r from-white/20 to-transparent rounded"></div>
                       </motion.button>
@@ -386,7 +344,6 @@ Time: ${new Date().toLocaleString()}
             <Card className="bg-black/20 border-white/10 backdrop-blur-lg">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
-                  <Brain size={20} />
                   💭 Share Your Vision
                 </CardTitle>
                 <CardDescription className="text-white/60">
@@ -430,7 +387,6 @@ Time: ${new Date().toLocaleString()}
             <Card className="bg-black/20 border-white/10 backdrop-blur-lg">
               <CardHeader>
                 <CardTitle className="text-white flex items-center gap-2">
-                  <Star size={20} />
                   ⭐ How Important Is This?
                 </CardTitle>
                 <CardDescription className="text-white/60">
@@ -489,12 +445,10 @@ Time: ${new Date().toLocaleString()}
                     transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                     className="flex items-center gap-2"
                   >
-                    <Sparkles size={20} />
                     Sending Your Dream...
                   </motion.div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <PaperPlaneTilt size={20} />
                     🚀 Launch My Idea
                   </div>
                 )}

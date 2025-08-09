@@ -1,6 +1,6 @@
 import { ComponentProps } from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
-import ChevronDownIcon from "lucide-react/dist/esm/icons/chevron-down"
+// icons removed
 
 import { cn } from "@/lib/utils"
 
@@ -38,8 +38,8 @@ function AccordionTrigger({
         )}
         {...props}
       >
-        {children}
-        <ChevronDownIcon className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
+  {children}
+  <span aria-hidden className="text-muted-foreground translate-y-0.5 transition-transform duration-200">▾</span>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>
   )

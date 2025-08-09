@@ -1,5 +1,4 @@
 import { ComponentProps } from "react"
-import GripVerticalIcon from "lucide-react/dist/esm/icons/grip-vertical"
 import * as ResizablePrimitive from "react-resizable-panels"
 
 import { cn } from "@/lib/utils"
@@ -44,7 +43,8 @@ function ResizableHandle({
     >
       {withHandle && (
         <div className="bg-border z-10 flex h-4 w-3 items-center justify-center rounded-xs border">
-          <GripVerticalIcon className="size-2.5" />
+          <span className="h-2 w-0.5 bg-foreground inline-block mr-0.5" />
+          <span className="h-2 w-0.5 bg-foreground inline-block ml-0.5" />
         </div>
       )}
     </ResizablePrimitive.PanelResizeHandle>
