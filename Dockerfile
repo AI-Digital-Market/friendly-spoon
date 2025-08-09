@@ -35,6 +35,9 @@ FROM nginx:alpine
 # Create a non-root user and group
 RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 
+# Install curl for healthchecks
+RUN apk add --no-cache curl
+
 # Copy built assets
 COPY --from=builder /app/dist /usr/share/nginx/html
 
