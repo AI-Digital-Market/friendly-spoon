@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Users, Heart, Brain, Target, Award, Sparkles } from '@phosphor-icons/react'
+import { Users, Heart, Brain, Target, Trophy, Sparkle } from '@phosphor-icons/react'
 
 interface AboutUsPageProps {
   onBack?: () => void

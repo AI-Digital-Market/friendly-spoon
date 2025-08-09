@@ -15,7 +15,7 @@ import {
   QuestionMark, 
   Gear, 
   Star,
-  AlertTriangle,
+  WaveTriangle,
   CheckCircle,
   Clock
 } from '@phosphor-icons/react'

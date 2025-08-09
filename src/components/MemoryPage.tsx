@@ -5,8 +5,8 @@ import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Progress } from '@/components/ui/progress'
 import { 
-  Brain, Microphone, MicrophoneSlash, Search, Plus, 
-  FileText, ContactBook, CreditCard, Key, Calendar,
+  Brain, Microphone, MicrophoneSlash, MagnifyingGlass, Plus, 
+  FileText, AddressBook, CreditCard, Key, Calendar,
   Code, Lightning, Copy, Archive, Folder, Tag,
   Clock, User, Lock, Eye, EyeSlash, Trash,
   Download, Upload, Star, Heart, BookBookmark,

@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { FileText, Scale, AlertTriangle, CheckCircle } from '@phosphor-icons/react'
+import { FileText, Scales, WaveTriangle, CheckCircle } from '@phosphor-icons/react'
 
 interface TermsConditionsPageProps {
   onBack?: () => void

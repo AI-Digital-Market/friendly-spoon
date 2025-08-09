@@ -10,7 +10,7 @@ import {
   TrendUp, 
   Code, 
   Users, 
-  Activity,
+  Pulse,
   CheckCircle,
   XCircle,
   Timer,

@@ -4,10 +4,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { 
-  PaintBrush, FileText, Sparkles, Send, Microphone, MicrophoneSlash, 
+  PaintBrush, FileText, Sparkle, PaperPlaneTilt, Microphone, MicrophoneSlash, 
   Code, Brain, Lightning, Heart, Star, Play, Copy, 
   SpeakerHigh, SpeakerSlash, Palette, BookOpen, MagicWand,
-  Lightbulb, Mask, Coffee
+  Lightbulb, MaskHappy, Coffee
 } from '@phosphor-icons/react'
 import { useState, useRef, useEffect } from 'react'
 

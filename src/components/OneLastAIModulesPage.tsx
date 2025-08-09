@@ -23,7 +23,7 @@ import {
   Stethoscope,
   Scales,
   MicrophoneStage,
-  Music,
+  MusicNotes,
   ChefHat,
   Barbell,
   HeartBreak,
@@ -47,7 +47,7 @@ import {
   MapPin,
   BookOpen,
   Palette,
-  Tshirt,
+  TShirt,
   Presentation,
   UserCircle
 } from '@phosphor-icons/react'

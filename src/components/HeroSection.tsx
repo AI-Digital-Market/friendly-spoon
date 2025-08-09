@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
-import { Brain, Sparkles, Robot, Heart, Eye, MessageCircle, Memory, ArrowDown } from '@phosphor-icons/react'
+import { Brain, Sparkle, Robot, Heart, Eye, ChatCircle, Memory, ArrowDown } from '@phosphor-icons/react'
 
 interface HeroSectionProps {
   onExploreModules?: () => void

@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button'
 import { Textarea } from '@/components/ui/textarea'
 import { Badge } from '@/components/ui/badge'
-import { MessageCircle, Mic, Send, Sparkles, User, Robot } from '@phosphor-icons/react'
+import { ChatCircle, Microphone, PaperPlaneTilt, Sparkle, User, Robot } from '@phosphor-icons/react'
 import { toast } from 'sonner'
 
 interface ChatMessage {

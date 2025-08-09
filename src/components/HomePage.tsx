@@ -7,7 +7,7 @@ import {
   Robot, 
   Heart, 
   Eye, 
-  MessageCircle, 
+  ChatCircle, 
   Brain, 
   Palette, 
   ArrowDown, 

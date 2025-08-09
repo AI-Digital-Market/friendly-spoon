@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { 
-  MessageCircle, Bot, Sparkles, Send, Microphone, MicrophoneSlash, 
+  ChatCircle, Boat, Sparkle, PaperPlaneTilt, Microphone, MicrophoneSlash, 
   Code, Brain, Lightning, Heart, Users, Star, Play, Copy, 
   SpeakerHigh, SpeakerSlash
 } from '@phosphor-icons/react'

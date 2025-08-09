@@ -5,7 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { 
   Article, BookOpen, Clock, User, Eye, Heart, Share, 
-  ArrowRight, Calendar, Tag, Search, Filter,
+  ArrowRight, Calendar, Tag, MagnifyingGlass, Funnel,
   Lightning, Robot, Brain, Gear, Globe, Sparkle,
   Link, Image as ImageIcon, Play, Download
 } from '@phosphor-icons/react'
