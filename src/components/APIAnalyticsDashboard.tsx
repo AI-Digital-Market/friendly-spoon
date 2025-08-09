@@ -314,13 +314,13 @@ export function APIAnalyticsDashboard({ onBack }: APIAnalyticsDashboardProps) {
                 <div className="h-64 flex items-end justify-between space-x-1">
                   {hourlyData.map((data, index) => (
                     <div key={index} className="flex-1 flex flex-col items-center">
-                      <div 
-                        className="w-full bg-accent/30 rounded-t-sm transition-all duration-300 hover:bg-accent/50"
-                        style={{ height: `${(data.requests / 120) * 100}%` }}
+                      <div
+                        className={`w-full bg-accent/30 rounded-t-sm transition-all duration-300 hover:bg-accent/50 requests-bar requests-bar-${index}`}
+                        data-bar-height={(data.requests / 120) * 100}
                       />
-                      <div 
-                        className="w-full bg-red-400/30 rounded-b-sm"
-                        style={{ height: `${(data.errors / 5) * 20}%` }}
+                      <div
+                        className={`w-full bg-red-400/30 rounded-b-sm errors-bar errors-bar-${index}`}
+                        data-bar-height={(data.errors / 5) * 20}
                       />
                       <span className="text-xs text-muted-foreground mt-2">
                         {data.hour}:00
@@ -366,9 +366,9 @@ export function APIAnalyticsDashboard({ onBack }: APIAnalyticsDashboardProps) {
                         </span>
                       </div>
                       <div className="w-full bg-muted/30 rounded-full h-2">
-                        <div 
-                          className="bg-accent h-2 rounded-full transition-all duration-500"
-                          style={{ width: `${Math.min((endpoint.avgResponseTime / 300) * 100, 100)}%` }}
+                        <div
+                          className={`bg-accent h-2 rounded-full transition-all duration-500 response-bar response-bar-${endpoint.endpoint.replace(/\W/g, '')}`}
+                          data-bar-width={Math.min((endpoint.avgResponseTime / 300) * 100, 100)}
                         />
                       </div>
                     </div>

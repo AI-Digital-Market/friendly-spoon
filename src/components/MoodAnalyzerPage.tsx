@@ -726,6 +726,8 @@ class ParentalUniversalSupport {
                       accept="image/*"
                       onChange={handlePhotoSelect}
                       className="hidden"
+                      title="Upload photo"
+                      placeholder="Upload photo"
                     />
                   </div>
                 </CardContent>

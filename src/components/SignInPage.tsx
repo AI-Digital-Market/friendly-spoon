@@ -117,6 +117,8 @@ export function SignInPage({ onBack, onNavigateSignUp, onNavigateForgotPassword 
                       checked={formData.rememberMe}
                       onChange={(e) => handleInputChange('rememberMe', e.target.checked)}
                       className="rounded border-border"
+                      title="Remember me"
+                      placeholder="Remember me"
                     />
                     <Label htmlFor="remember" className="text-sm">Remember me</Label>
                   </div>
